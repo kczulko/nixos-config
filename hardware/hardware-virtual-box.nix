@@ -12,14 +12,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/61e6931f-b791-47a3-93b2-7268f7c801c1";
+    { device = "/dev/sda1";
       fsType = "ext4";
     };
 
   swapDevices = [ ];
-
   
   nix.maxJobs = lib.mkDefault 1;
+
   nixpkgs.config.allowUnfree = true;
   virtualisation.virtualbox.host.enable = true; 
   virtualisation.virtualbox.guest.enable = true;
