@@ -32,17 +32,20 @@
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
+    # font = "Lat2-Terminus16";
+    # keyMap = "us";
   # };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Warsaw";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim git
+    wget
+    vim
+    git
+    emacs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
