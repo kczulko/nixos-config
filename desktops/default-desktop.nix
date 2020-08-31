@@ -16,6 +16,7 @@
         dmenu
         feh
         i3lock
+        i3status
         polybarFull
         rofi
       ];
