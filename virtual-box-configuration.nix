@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware/hardware-virtual-box.nix
       ./desktops/default-desktop.nix
+      ./home.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -18,7 +19,6 @@
 
   networking.hostName = "virual-box";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  services.virtualbox.enable = true;
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -47,11 +47,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    git-crypt
     wget
     vim
     git
     emacs
     ranger
+    silver-searcher
+    mkpasswd
+    google-chrome
+    # xe-guest-utilities
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -75,11 +80,11 @@
   # networking.firewall.enable = false;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -92,12 +97,6 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
