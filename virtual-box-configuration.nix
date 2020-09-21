@@ -9,7 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware/hardware-virtual-box.nix
       ./desktops/default-desktop.nix
-      ./home.nix
+      ./users/kczulko/user-profile.nix
+      <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
     ];
 
   # Use the GRUB 2 boot loader.
@@ -84,7 +85,19 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware = {
+    pulseaudio.enable = true;
+
+    sane = {
+      enable = true;
+      brscan4 = {
+        enable = true;
+        netDevices = {
+          home = { model = "DCP-J105"; ip = "192.168.0.14"; };
+        };
+      };
+    };
+  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
