@@ -85,8 +85,7 @@ in {
         enableAutosuggestions = true;
         shellAliases = {
           ll = "ls -la";
-          # define in following way:
-          # some-value = "<your-command>"
+          rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/kczulko/Projects/nixos-config/virtual-box-configuration.nix";
         };
         oh-my-zsh = {
           enable = true;
