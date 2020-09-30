@@ -11,7 +11,6 @@ in {
     (import "${home-manager}/nixos")
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kczulko = {
 
     description = "kczulko";
@@ -44,7 +43,7 @@ in {
       TERM = "xterm-256color";
     };
     home.packages = with pkgs; [
-      metals
+      customizations.metals
       sbt
       jdk
       bloop
