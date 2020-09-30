@@ -57,7 +57,6 @@
     silver-searcher
     mkpasswd
     google-chrome
-    # xe-guest-utilities
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

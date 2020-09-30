@@ -4,6 +4,7 @@ let
   home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
   secrets = import ../../secrets.nix;
 
+  customizations = import ./customizations/all.nix { inherit pkgs; };
 in {
 
   imports = [
@@ -21,6 +22,9 @@ in {
       "wheel"
       "docker"
       "scanner"
+      "sound"
+      "pulse"
+      "audio"
       "lp"
     ];
     home = "/home/kczulko";
@@ -34,14 +38,32 @@ in {
     home.file = {
       ".Xresources".source = ./config-files/.Xresources;
     };
+    home.sessionVariables = {
+      TERM = "xterm-256color";
+    };
     home.packages = with pkgs; [
       metals
       sbt
       jdk
       bloop
       gscan2pdf
+      citrix_workspace
+      xe-guest-utilities
     ];
     programs = {
+      firefox = {
+        enable = true;
+        profiles = {
+          windows = {
+            settings = {
+              "general.useragent.override" =
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36";
+              "browser.startup.homepage" =
+                secrets.users.kczulko.homepage;
+            };
+          };
+        };
+      };
       git = {
         enable = true;
         userName  = "kczulko";
@@ -60,6 +82,7 @@ in {
         enable = true;
         enableAutosuggestions = true;
         shellAliases = {
+          ll = "ls -la";
           # define in following way:
           # some-value = "<your-command>"
         };
