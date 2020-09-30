@@ -37,6 +37,8 @@ in {
   home-manager.users.kczulko = {
     home.file = {
       ".Xresources".source = ./config-files/.Xresources;
+      ".config/i3/config".source = ./config-files/.config/i3/config;
+      ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
     };
     home.sessionVariables = {
       TERM = "xterm-256color";
