@@ -35,8 +35,10 @@ in {
 
   home-manager.users.kczulko = {
     home.file = {
+      ".fehbg".source = ./config-files/.fehbg;
       ".Xresources".source = ./config-files/.Xresources;
       ".config/i3/config".source = ./config-files/.config/i3/config;
+      ".config/wallpaper.jpg".source = ./config-files/.config/wallpaper.jpg;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
     };
     home.sessionVariables = {

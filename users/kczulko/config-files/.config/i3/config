@@ -15,9 +15,8 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Hack Regular 10
 
-# Workaround for very uncool behaviour of Dell Precision 5540
 # This should set resultion right, set wallpaper and run polybar
-exec --no-startup-id sh ~/.screenlayout/setup-monitor.layout.sh
+exec --no-startup-id sh ~/.fehbg
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
