@@ -110,7 +110,7 @@ type = internal/fs
 
 ; Mountpoints to display
 mount-0 = /
-mount-1 = /home
+;mount-1 = /home
 label-mounted =  %mountpoint%: %percentage_used%%
 
 [module/pulseaudio]
