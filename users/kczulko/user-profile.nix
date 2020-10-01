@@ -39,8 +39,8 @@ in {
       ".Xresources".source = ./config-files/.Xresources;
       ".config/i3/config".source = ./config-files/.config/i3/config;
       ".config/wallpaper.jpg".source = ./config-files/.config/wallpaper.jpg;
+      ".config/polybar".source = ./config-files/.config/polybar;
       ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
-      ".config/polybar/config".source = ./config-files/.config/polybar/config;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
     };
     home.sessionVariables = {
@@ -48,6 +48,7 @@ in {
     };
     home.packages = with pkgs; [
       customizations.metals
+      customizations.polybar-launcher
       sbt
       jdk
       bloop

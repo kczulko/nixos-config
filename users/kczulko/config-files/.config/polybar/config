@@ -8,7 +8,6 @@ module-margin = 2
 padding = 5
 
 [bar/desktop-mainbar]
-monitor = VGA-1
 font-0 = ${monokai.font-one}
 font-1 = ${monokai.font-two}
 font-2 = ${monokai.font-three}
