@@ -50,6 +50,7 @@
   environment.systemPackages = with pkgs; [
     git-crypt
     wget
+    psmisc
     vim
     git
     emacs
