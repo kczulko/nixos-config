@@ -22,7 +22,7 @@ let
       extraPackages = with pkgs; [
         dmenu
         feh
-        i3lock
+        i3lock-pixeled
         i3status
         polybarFull
         rofi
