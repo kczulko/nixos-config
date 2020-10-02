@@ -55,6 +55,7 @@ in {
       gscan2pdf
       citrix_workspace
       xe-guest-utilities
+      calcurse
     ];
     programs = {
       firefox = {
@@ -82,6 +83,12 @@ in {
           hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
           type = "cat-file -t";
           dump = "cat-file -p";
+        };
+        extraConfig = {
+          core = {
+            # cat instead of less for git diff
+            pager = "cat";
+          };
         };
       };
       zsh = {

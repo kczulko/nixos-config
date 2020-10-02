@@ -36,6 +36,7 @@ modules-right = cpu memory filesystem pulseaudio battery
 [module/date]
 type = internal/date
 date = %F  %T %Z
+click-left = "/run/current-system/sw/bin/calcurse &"
 
 [module/i3]
 type = internal/i3
