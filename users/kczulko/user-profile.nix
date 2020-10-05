@@ -56,6 +56,10 @@ in {
       citrix_workspace
       xe-guest-utilities
       calcurse
+      ghc
+      cabal2nix
+      cabal-install
+      nix-prefetch-git
     ];
     programs = {
       firefox = {
