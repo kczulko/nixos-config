@@ -1,7 +1,12 @@
 {pkgs,...}:
 let
 
+  unstable = import (
+    fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
+    ){ config = { allowUnfree = true; }; };
+
   home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
+
   secrets = import ../../secrets.nix;
 
   customizations = import ./customizations/all.nix { inherit pkgs; };
@@ -59,6 +64,7 @@ in {
       ghc
       cabal2nix
       cabal-install
+      # unstable.haskellPackages.haskell-language-server
       nix-prefetch-git
     ];
     programs = {

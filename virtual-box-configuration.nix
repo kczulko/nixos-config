@@ -49,7 +49,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git-crypt
+    binutils-unwrapped
     wget
+    python27
     psmisc
     vim
     git
