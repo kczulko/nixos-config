@@ -5,7 +5,7 @@ let
     fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
     ){ config = { allowUnfree = true; }; };
 
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
 
   secrets = import ../../secrets.nix;
 
@@ -58,7 +58,7 @@ in {
       jdk
       bloop
       gscan2pdf
-      citrix_workspace
+      # citrix_workspace
       xe-guest-utilities
       calcurse
       ghc
