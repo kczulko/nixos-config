@@ -10,6 +10,7 @@ let
   secrets = import ../../secrets.nix;
 
   customizations = import ./customizations/all.nix { inherit pkgs; };
+
 in {
 
   imports = [
@@ -52,19 +53,19 @@ in {
       TERM = "xterm-256color";
     };
     home.packages = with pkgs; [
-      customizations.metals
+      # customizations.metals
+      unstable.metals
       customizations.polybar-launcher
       sbt
       jdk
       bloop
       gscan2pdf
-      # citrix_workspace
       xe-guest-utilities
       calcurse
       ghc
       cabal2nix
       cabal-install
-      # unstable.haskellPackages.haskell-language-server
+      # unstable.haskell-language-server
       nix-prefetch-git
     ];
     programs = {

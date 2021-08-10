@@ -60,6 +60,8 @@
     silver-searcher
     mkpasswd
     google-chrome
+    pkgs.zlib.dev
+    zlib
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
