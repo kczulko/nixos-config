@@ -9,8 +9,20 @@ let
 
   secrets = import ../../secrets.nix;
 
+  # configJava8 = {
+  #   packageOverrides = pkgs: rec {
+  #     jdk = pkgs.openjdk8;
+  #     jre = pkgs.openjdk8;
+  #   };
+  # };
+
+  # pkgs = import <nixpkgs> { inherit configJava8; };
+
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
+  sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
+  metalsJava8 = unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
+  bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
 in {
 
   imports = [
@@ -54,11 +66,11 @@ in {
     };
     home.packages = with pkgs; [
       # customizations.metals
-      unstable.metals
+      metalsJava8
       customizations.polybar-launcher
-      sbt
-      jdk
-      bloop
+      sbtJava8
+      openjdk8
+      bloopJava8
       gscan2pdf
       xe-guest-utilities
       calcurse
@@ -67,6 +79,7 @@ in {
       cabal-install
       # unstable.haskell-language-server
       nix-prefetch-git
+      unrar
     ];
     programs = {
       firefox = {
@@ -96,6 +109,9 @@ in {
           dump = "cat-file -p";
         };
         extraConfig = {
+          init = {
+            defaultBranch = "master";
+          };
           core = {
             # cat instead of less for git diff
             pager = "cat";
