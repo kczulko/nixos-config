@@ -91,7 +91,17 @@ in {
               # "general.useragent.override" =
               "browser.startup.homepage" = "duckduckgo.com";
               "browser.fullscreen.autohide" = false;
+              # enable userChrome
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             };
+            userChrome = ''
+               /*
+                  Show Bookmarks Toolbar in fullscreen mode
+               */
+               #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
+                 visibility: unset !important;
+               }
+            '';
           };
         };
       };
