@@ -7,10 +7,10 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware/hardware-virtual-box.nix
+      ./hardware/virtual-box.nix
+      ./common.nix
       ./desktops/default-desktop.nix
       ./users/kczulko/user-profile.nix
-      <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
     ];
 
   # Use the GRUB 2 boot loader.
@@ -31,38 +31,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "pl";
-  };
-
-  programs.bash = {
-    enableCompletion = true;
-  };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Warsaw";
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git-crypt
-    binutils-unwrapped
-    wget
-    python27
-    psmisc
-    vim
-    git
-    emacs
-    ranger
-    silver-searcher
-    mkpasswd
-    google-chrome
-    pkgs.zlib.dev
-    zlib
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -83,25 +51,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware = {
-    pulseaudio.enable = true;
-
-    sane = {
-      enable = true;
-      brscan4 = {
-        enable = true;
-        netDevices = {
-          home = { model = "DCP-J105"; ip = "192.168.0.14"; };
-        };
-      };
-    };
-  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

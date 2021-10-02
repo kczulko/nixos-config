@@ -79,18 +79,18 @@ in {
       cabal-install
       # unstable.haskell-language-server
       nix-prefetch-git
+      evince
       unrar
     ];
     programs = {
       firefox = {
         enable = true;
         profiles = {
-          windows = {
+          default = {
             settings = {
-              "general.useragent.override" =
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36";
-              "browser.startup.homepage" =
-                secrets.users.kczulko.homepage;
+              # "general.useragent.override" =
+              "browser.startup.homepage" = "duckduckgo.com";
+              "browser.fullscreen.autohide" = false;
             };
           };
         };
@@ -123,7 +123,7 @@ in {
         enableAutosuggestions = true;
         shellAliases = {
           ll = "ls -la";
-          rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/kczulko/Projects/nixos-config/virtual-box-configuration.nix";
+          rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/kczulko/Projects/nixos-config/current.nix";
         };
         oh-my-zsh = {
           enable = true;
