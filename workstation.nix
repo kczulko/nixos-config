@@ -34,10 +34,7 @@
     # required by zfs
     hostId ="acef45ac";
     hostName = "workstation";
-    wireless = {
-      interfaces = [ "wlp0s20f0u6" ];
-      # enable = true;  # Enables wireless support via wpa_supplicant.
-    };
+    wireless.interfaces = [ "wlp0s20f0u6" ];
     # Network (Wireless and cord)
     networkmanager.enable = true;
   };
