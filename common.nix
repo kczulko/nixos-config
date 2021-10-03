@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-  sd = "s";
-in {
+{
 
   config = {
     nixpkgs.config = {
