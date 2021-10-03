@@ -43,6 +43,8 @@
     wget
     python27
     psmisc
+    du-dust
+    fd
     vim
     git
     emacs
