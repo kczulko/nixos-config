@@ -72,6 +72,7 @@ in {
       openjdk8
       bloopJava8
       gscan2pdf
+      droidcam
       xe-guest-utilities
       calcurse
       ghc
@@ -95,9 +96,7 @@ in {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             };
             userChrome = ''
-               /*
-                  Show Bookmarks Toolbar in fullscreen mode
-               */
+               /* Show Bookmarks Toolbar in fullscreen mode */
                #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
                  visibility: unset !important;
                }
