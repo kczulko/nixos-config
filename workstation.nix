@@ -16,6 +16,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.copyKernels = true;
   boot.zfs.requestEncryptionCredentials=true;
   boot.supportedFilesystems = [ "zfs" ];
 
@@ -36,6 +37,19 @@
     # Network (Wireless and cord)
     networkmanager.enable = true;
   };
+
+  services.zfs.autoScrub.enable = true;
+  services.zfs.trim.enable = true;
+  services.zfs.autoSnapshot = {
+    enable = true;
+    flags = "-k -p --utc";
+    frequent = 4;
+    hourly = 6;
+    daily = 3;
+    weekly = 1;
+    monthly = 1;
+  };
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.

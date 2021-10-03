@@ -17,6 +17,13 @@ in {
 
   imports = [ <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix> ];
 
+  # Clean up nix gc
+  config.nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   config.i18n.defaultLocale = "en_US.UTF-8";
   config.console = {
     font = "Lat2-Terminus16";
