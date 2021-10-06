@@ -75,6 +75,9 @@ in {
       droidcam
       xe-guest-utilities
       calcurse
+      slack-dark
+      ispell
+      vlc
       ghc
       cabal2nix
       cabal-install
@@ -124,6 +127,12 @@ in {
           core = {
             # cat instead of less for git diff
             pager = "cat";
+          };
+          "filter \"lfs\"" = {
+            process = "git-lfs filter-process";
+            required = true;
+            clean = "git-lfs clean -- %f";
+            smudge = "git-lfs smudge -- %f";
           };
         };
       };

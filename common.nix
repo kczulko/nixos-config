@@ -9,6 +9,7 @@
         "brother-udev-rule-type1"
         "brscan4-etc-files"
         "unrar"
+        "slack"
       ];
     };
   };
@@ -44,14 +45,17 @@
     python27
     psmisc
     du-dust
+    nomacs
+    lshw
     fd
     vim
     git
+    git-lfs
     emacs
     ranger
     silver-searcher
     mkpasswd
-    pkgs.zlib.dev
+    zlib.dev
     zlib
   ];
 
