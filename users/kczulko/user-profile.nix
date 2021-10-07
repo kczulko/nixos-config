@@ -66,25 +66,25 @@ in {
     };
     home.packages = with pkgs; [
       # customizations.metals
-      metalsJava8
-      customizations.polybar-launcher
-      sbtJava8
-      openjdk8
-      bloopJava8
-      gscan2pdf
-      droidcam
-      xe-guest-utilities
-      calcurse
-      slack-dark
-      ispell
-      vlc
-      ghc
-      cabal2nix
-      cabal-install
       # unstable.haskell-language-server
-      nix-prefetch-git
+      bloopJava8
+      cabal-install
+      cabal2nix
+      calcurse
+      customizations.polybar-launcher
       evince
+      ghc
+      gnome3.gnome-screenshot
+      gscan2pdf
+      ispell
+      metalsJava8
+      nix-prefetch-git
+      openjdk8
+      sbtJava8
+      slack-dark
       unrar
+      vlc
+      xe-guest-utilities
     ];
     programs = {
       firefox = {

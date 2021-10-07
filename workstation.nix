@@ -20,10 +20,6 @@
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
 
-  # droidcam modules
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" "snd-aloop" ];
-
   networking = {
 
     useDHCP = false;
