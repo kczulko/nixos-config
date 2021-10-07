@@ -85,6 +85,7 @@ in {
       unrar
       vlc
       xe-guest-utilities
+      zoom-us
     ];
     programs = {
       firefox = {

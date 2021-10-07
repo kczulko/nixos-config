@@ -10,6 +10,7 @@
         "brscan4-etc-files"
         "unrar"
         "slack"
+        "zoom"
       ];
     };
   };
@@ -39,24 +40,22 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   config.environment.systemPackages = with pkgs; [
-    git-crypt
     binutils-unwrapped
-    wget
-    python27
-    psmisc
     du-dust
-    nomacs
-    lshw
-    fd
-    vim
-    git
-    git-lfs
     emacs
+    fd
+    git
+    git-crypt
+    git-lfs
+    lshw
+    mkpasswd
+    nomacs
+    psmisc
+    python27
     ranger
     silver-searcher
-    mkpasswd
-    zlib.dev
-    zlib
+    vim
+    wget
   ];
 
   # Enable CUPS to print documents.
