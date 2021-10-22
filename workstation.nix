@@ -33,6 +33,11 @@
     wireless.interfaces = [ "wlp0s20f0u6" ];
     # Network (Wireless and cord)
     networkmanager.enable = true;
+
+    # the printer
+    extraHosts = ''
+      192.168.0.14 BRW94533072B538.local
+    '';
   };
 
   services.zfs.autoScrub.enable = true;

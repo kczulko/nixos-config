@@ -17,11 +17,20 @@
 
   imports = [ <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix> ];
 
-  # Clean up nix gc
-  config.nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
+  config.nix = {
+
+    # Clean up nix gc
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+
+    # direnv "cache" setup
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
   };
 
   config.i18n.defaultLocale = "en_US.UTF-8";
@@ -60,6 +69,9 @@
 
   # Enable CUPS to print documents.
   config.services.printing.enable = true;
+  config.services.printing.drivers = [ (pkgs.callPackage ./printer.nix {}) ];
+  config.services.avahi.enable = true;
+  config.services.avahi.nssmdns = true;
 
   # Enable sound.
   config.sound.enable = true;
@@ -74,6 +86,18 @@
           home = { model = "DCP-J105"; ip = "192.168.0.14"; };
         };
       };
+    };
+
+    printers = {
+      ensureDefaultPrinter = "DCP-J105";
+      ensurePrinters = [
+        {
+          name = "DCP-J105";
+          description = "Brother DCP-J105";
+          deviceUri = "ipp://BRW94533072B538.local:631/ipp/print";
+          model = "brother_dcpj105_printer_en.ppd";
+        }
+      ];
     };
   };
 

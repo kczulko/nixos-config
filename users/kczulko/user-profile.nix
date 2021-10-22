@@ -9,20 +9,12 @@ let
 
   secrets = import ../../secrets.nix;
 
-  # configJava8 = {
-  #   packageOverrides = pkgs: rec {
-  #     jdk = pkgs.openjdk8;
-  #     jre = pkgs.openjdk8;
-  #   };
-  # };
-
-  # pkgs = import <nixpkgs> { inherit configJava8; };
-
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
   metalsJava8 = unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
   bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
+
 in {
 
   imports = [
@@ -66,14 +58,12 @@ in {
     };
     home.packages = with pkgs; [
       # customizations.metals
-      # unstable.haskell-language-server
+      bat
       bloopJava8
-      cabal-install
       cabal2nix
       calcurse
       customizations.polybar-launcher
       evince
-      ghc
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
@@ -83,11 +73,18 @@ in {
       sbtJava8
       slack-dark
       unrar
+      unstable.cabal-install
+      unstable.ghc
+      unstable.haskell-language-server
       vlc
       xe-guest-utilities
       zoom-us
     ];
     programs = {
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
       firefox = {
         enable = true;
         profiles = {
