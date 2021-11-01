@@ -26,23 +26,22 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.hostId = "ace456ac";
-  #networking.wireless.enable = true;
-  networking.interfaces.enp0s20f0u5.useDHCP = true;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
-  networking.networkmanager.enable = true;
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
+  networking = {
+    useDHCP = false;
+    hostId = "ace456ac";
+    hostName = "thinkpad";
+    interfaces = {
+      enp0s20f0u5.useDHCP = true;
+      enp0s31f6.useDHCP = true;
+      wlp0s20f3.useDHCP = true;
+    };
+    wireless.interfaces = [ "wlp0s20f3" ];
+    networkmanager.enable = true;
+    # the printer
+    extraHosts = ''
+      192.168.0.14 BRW94533072B538.local
+    '';
+  };
 
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
