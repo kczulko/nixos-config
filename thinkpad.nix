@@ -31,7 +31,8 @@
     hostId = "ace456ac";
     hostName = "thinkpad";
     interfaces = {
-      enp0s20f0u5.useDHCP = true;
+      # disable usb ethernet adapter config
+      # enp0s20f0u5.useDHCP = true;
       enp0s31f6.useDHCP = true;
       wlp0s20f3.useDHCP = true;
     };

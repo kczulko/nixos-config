@@ -5,8 +5,7 @@ set -o errexit
 
 if [ $(hostname) == "thinkpad" ]
 then
-    /run/current-system/sw/bin/sh xrandr \
-                                  --output eDP-1 \
+    /run/current-system/sw/bin/xrandr --output eDP-1 \
                                   --primary \
                                   --mode 1920x1080 \
                                   --pos 0x0 \
