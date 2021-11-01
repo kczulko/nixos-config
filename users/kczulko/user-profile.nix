@@ -12,7 +12,12 @@ let
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
-  metalsJava8 = unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
+  metalsJava8 = pkgs.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
+# l9zfy-metals-deps-0.10.8':
+  # wanted: sha256:11skbg0is1g5i97z6cc4i0qr2wgyj02w7dbv8b04qc4qyqvpwcn5
+  # got:    sha256:0vp7d2b7qykiii63k3zkj364x1hn2y6d2jp9klj0xxs3jniy7wrb
+# cannot build derivation '/nix/store/dqsbwj5jzmp944xqq6l0axi9d5lyass
+  #unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
   bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
 
 in {
@@ -52,6 +57,7 @@ in {
       ".config/polybar".source = ./config-files/.config/polybar;
       ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
+      ".screenlayout/setup.sh".source = ./config-files/.screenlayout/setup.sh;
     };
     home.sessionVariables = {
       TERM = "xterm-256color";
