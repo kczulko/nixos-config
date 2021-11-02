@@ -12,6 +12,7 @@
       ./common.nix
       ./desktops/default-desktop.nix
       ./users/kczulko/user-profile.nix
+      ./users/ula/user-profile.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -55,7 +56,8 @@
     weekly = 1;
     monthly = 1;
   };
-  
+
+  # services.xserver.desktopManager.gnome.enable = true;
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";

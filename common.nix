@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 
+let
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
+in
+
 {
+  imports = [
+    <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
+    (import "${home-manager}/nixos")
+  ];
 
   config = {
     nixpkgs.config = {
@@ -14,8 +22,6 @@
       ];
     };
   };
-
-  imports = [ <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix> ];
 
   config.nix = {
 

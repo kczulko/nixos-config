@@ -7,23 +7,12 @@ let
 
   secrets = import ../../secrets.nix;
 
-  customizations = import ./customizations/all.nix { inherit pkgs; };
-
-  sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
-  metalsJava8 = pkgs.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
-# l9zfy-metals-deps-0.10.8':
-  # wanted: sha256:11skbg0is1g5i97z6cc4i0qr2wgyj02w7dbv8b04qc4qyqvpwcn5
-  # got:    sha256:0vp7d2b7qykiii63k3zkj364x1hn2y6d2jp9klj0xxs3jniy7wrb
-# cannot build derivation '/nix/store/dqsbwj5jzmp944xqq6l0axi9d5lyass
-  #unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
-  bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
-
 in {
 
-  users.users.kczulko = {
+  users.users.ula = {
 
-    description = "kczulko";
-    uid = 6666;
+    description = "ula";
+    uid = 6667;
     isNormalUser = true;
     group = "nogroup";
     extraGroups = [
@@ -35,23 +24,18 @@ in {
       "audio"
       "lp"
     ];
-    home = "/home/kczulko";
+    home = "/home/ula";
     shell = pkgs.lib.mkForce pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    hashedPassword = secrets.users.kczulko.hashedPassword;
+    hashedPassword = secrets.users.ula.hashedPassword;
   };
 
-  home-manager.users.kczulko = {
+  home-manager.users.ula = {
     home.file = {
-      ".fehbg".source = ./config-files/.fehbg;
-      ".Xresources".source = ./config-files/.Xresources;
-      ".config/i3/config".source = ./config-files/.config/i3/config;
-      ".config/wallpaper.jpg".source = ./config-files/.config/wallpaper.jpg;
-      ".config/polybar".source = ./config-files/.config/polybar;
-      ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
-      ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
-      ".screenlayout/setup.sh".source = ./config-files/.screenlayout/setup.sh;
+      ".Xresources".source = ../kczulko/config-files/.Xresources;
+      ".config/alacritty/alacritty.yml".source = ../kczulko/config-files/.config/alacritty/alacritty.yml;
+      ".screenlayout/setup.sh".source = ../kczulko/config-files/.screenlayout/setup.sh;
     };
     home.sessionVariables = {
       TERM = "xterm-256color";
@@ -59,28 +43,22 @@ in {
     home.packages = with pkgs; [
       # customizations.metals
       bat
-      bloopJava8
-      cabal2nix
       calcurse
-      customizations.polybar-launcher
       evince
       gnome3.gnome-screenshot
+      gnome3.gnome-session
       gscan2pdf
-      ispell
-      metalsJava8
-      nix-prefetch-git
-      openjdk8
-      sbtJava8
-      slack-dark
       unrar
-      unstable.cabal-install
-      unstable.ghc
-      unstable.haskell-language-server
       vlc
-      xe-guest-utilities
-      zoom-us
     ];
 
+    xsession = {
+      enable = true;
+      windowManager.command = ''
+        gnome-session
+      '';
+    };
+    
     programs = {
       direnv = {
         enable = true;
@@ -108,8 +86,8 @@ in {
       };
       git = {
         enable = true;
-        userName  = "kczulko";
-        userEmail = secrets.users.kczulko.email;
+        userName  = "uullcciiaa";
+        userEmail = secrets.users.ula.email;
         aliases = {
           co = "checkout";
           ci = "commit";
@@ -140,8 +118,7 @@ in {
         enableAutosuggestions = true;
         shellAliases = {
           ll = "ls -la";
-          rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/kczulko/Projects/nixos-config/current.nix";
-          restart-xsession = "systemctl --user stop graphical-session.target";
+          rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/ula/Projects/nixos-config/current.nix";
         };
         oh-my-zsh = {
           enable = true;
