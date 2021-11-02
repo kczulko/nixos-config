@@ -10,12 +10,16 @@ let
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
+
+  i3lock-pixeled-fixed = pkgs.i3lock-pixeled.overrideDerivation (oldAttrs: rec {
+    patchPhase = oldAttrs.patchPhase + ''
+      substituteInPlace i3lock-pixeled \
+        --replace '# take the actual screenshot' 'rm $IMGFILE 2> /dev/null'
+    '';
+  });
+
+  # cannot build derivation unstable.metals due to hash issues
   metalsJava8 = pkgs.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
-# l9zfy-metals-deps-0.10.8':
-  # wanted: sha256:11skbg0is1g5i97z6cc4i0qr2wgyj02w7dbv8b04qc4qyqvpwcn5
-  # got:    sha256:0vp7d2b7qykiii63k3zkj364x1hn2y6d2jp9klj0xxs3jniy7wrb
-# cannot build derivation '/nix/store/dqsbwj5jzmp944xqq6l0axi9d5lyass
-  #unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
   bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
 
 in {
