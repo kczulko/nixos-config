@@ -45,8 +45,12 @@ in {
       bat
       calcurse
       evince
+      gnome3.gnome-tweak-tool
+      gnome3.eog
       gnome3.gnome-screenshot
       gnome3.gnome-session
+      gnomeExtensions.appindicator
+      gnomeExtensions.dash-to-dock
       gscan2pdf
       unrar
       vlc
