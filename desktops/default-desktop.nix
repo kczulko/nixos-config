@@ -13,8 +13,7 @@ let
     '';
   });
 
-  in
-{
+in {
   services = {
     # For checking power status
     upower.enable = true;
@@ -49,11 +48,4 @@ let
     })
   ];
 
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet # NetworkManager in Gnome
-    pavucontrol # PulseAudio Volume Control
-    alacritty # fast rust terminal emulator
-    arandr # Front End for xrandr
-    brightnessctl # Control screen brightness
-  ];
 }

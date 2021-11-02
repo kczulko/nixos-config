@@ -1,4 +1,4 @@
-{pkgs,home-manager,...}:
+{pkgs, home-manager, ...}:
 let
 
   unstable = import (
@@ -7,8 +7,18 @@ let
 
   secrets = import ../../secrets.nix;
 
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
+
+  hmLib = (import "${home-manager}/modules/lib/gvariant.nix" { lib = pkgs.lib; });
+
+  setup-resolution = import ../kczulko/customizations/setup-resolution.nix { pkgs = pkgs; };
+
 in {
 
+  # for now it probably works without that
+  # services.dbus.packages = [ pkgs.gnome3.dconf ];
+  # services.udev.packages = [ pkgs.gnome3.gnome-settings-deamon ];
+  
   users.users.ula = {
 
     description = "ula";
@@ -32,35 +42,70 @@ in {
   };
 
   home-manager.users.ula = {
-    home.file = {
-      ".Xresources".source = ../kczulko/config-files/.Xresources;
-      ".config/alacritty/alacritty.yml".source = ../kczulko/config-files/.config/alacritty/alacritty.yml;
-      ".screenlayout/setup.sh".source = ../kczulko/config-files/.screenlayout/setup.sh;
+
+    home = {
+      file = {
+        ".Xresources".source = ../kczulko/config-files/.Xresources;
+        ".screenlayout/setup.sh".source = ../kczulko/config-files/.screenlayout/setup.sh;
+        ".config/alacritty/alacritty.yml".source = ../kczulko/config-files/.config/alacritty/alacritty.yml;
+        ".config/autostart/setup-resolution.desktop".source = ./config-files/.config/autostart/setup-resolution.desktop;
+        ".config/wallpaper.png".source = ./config-files/wallpaper.png;
+      };
+      sessionVariables = {
+        TERM = "xterm-256color";
+      };
+      packages = with pkgs; [
+        bat
+        calcurse
+        evince
+        google-chrome
+        gnome3.gnome-control-center
+        gnome3.gnome-tweak-tool
+        gnome3.eog
+        gnome3.gnome-screenshot
+        gnome3.gnome-session
+        gnome3.nautilus
+        gnomeExtensions.appindicator
+        gnomeExtensions.dash-to-dock
+        gscan2pdf
+        libreoffice
+        setup-resolution
+        unrar
+        vlc
+      ];
     };
-    home.sessionVariables = {
-      TERM = "xterm-256color";
-    };
-    home.packages = with pkgs; [
-      # customizations.metals
-      bat
-      calcurse
-      evince
-      gnome3.gnome-tweak-tool
-      gnome3.eog
-      gnome3.gnome-screenshot
-      gnome3.gnome-session
-      gnomeExtensions.appindicator
-      gnomeExtensions.dash-to-dock
-      gscan2pdf
-      unrar
-      vlc
-    ];
 
     xsession = {
       enable = true;
       windowManager.command = ''
         gnome-session
       '';
+    };
+
+    dconf.settings = {
+      "org/gnome/desktop/peripherals/mouse" = {
+        "natural-scroll" = false;
+        "speed" = -0.5;
+      };
+
+      "org/gnome/desktop/peripherals/touchpad" = {
+        "tap-to-click" = true;
+        "two-finger-scrolling-enabled" = true;
+      };
+
+      "org/gnome/desktop/input-sources" = {
+        "current" = "uint32 0";
+        "sources" = [ (hmLib.mkTuple [ "xkb" "us" ]) ];
+        "xkb-options" = [ "terminate:ctrl_alt_bksp" "lv3:ralt_switch" "caps:ctrl_modifier" ];
+      };
+
+      "org/gnome/desktop/background" = {
+        "picture-uri" = "file:///home/ula/.config/wallpaper.png";
+      };
+
+      "org/gnome/desktop/screensaver" = {
+        "picture-uri" = "file:///home/ula/.config/wallpaper.png";
+      };
     };
     
     programs = {

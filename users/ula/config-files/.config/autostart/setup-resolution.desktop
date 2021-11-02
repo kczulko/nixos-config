@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SetupXrandrResolution
+GenericName=Setup xrandr resolution
+Comment=Adjusts resolution with xrandr on gnome3 startup
+Exec=setup-resolution
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true

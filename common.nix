@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
-in
 
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
+
+in
 {
   imports = [
     <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
@@ -13,6 +14,7 @@ in
   config = {
     nixpkgs.config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "google-chrome"
         "brscan4"
         "brother-udev-rule-type1"
         "brscan4-etc-files"
@@ -55,7 +57,10 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   config.environment.systemPackages = with pkgs; [
+    alacritty # fast rust terminal emulator
+    arandr # Front End for xrandr
     binutils-unwrapped
+    brightnessctl # Control screen brightness
     du-dust
     emacs
     fd
@@ -64,7 +69,8 @@ in
     git-lfs
     lshw
     mkpasswd
-    nomacs
+    networkmanagerapplet # NetworkManager in Gnome
+    pavucontrol # PulseAudio Volume Control
     psmisc
     python27
     ranger

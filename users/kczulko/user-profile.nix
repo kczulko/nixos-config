@@ -63,6 +63,7 @@ in {
       cabal2nix
       calcurse
       customizations.polybar-launcher
+      customizations.setup-resolution
       evince
       gnome3.gnome-screenshot
       gscan2pdf
