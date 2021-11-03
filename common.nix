@@ -68,6 +68,7 @@ in
     git-crypt
     git-lfs
     lshw
+    lsof
     mkpasswd
     networkmanagerapplet # NetworkManager in Gnome
     pavucontrol # PulseAudio Volume Control
