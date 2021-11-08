@@ -20,6 +20,10 @@
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
 
+  # enable virtualisation
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = [ "kczulko" ];
+
   networking = {
 
     useDHCP = false;

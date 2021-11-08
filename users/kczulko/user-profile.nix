@@ -11,13 +11,6 @@ let
 
   sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
 
-  i3lock-pixeled-fixed = pkgs.i3lock-pixeled.overrideDerivation (oldAttrs: rec {
-    patchPhase = oldAttrs.patchPhase + ''
-      substituteInPlace i3lock-pixeled \
-        --replace '# take the actual screenshot' 'rm $IMGFILE 2> /dev/null'
-    '';
-  });
-
   # cannot build derivation unstable.metals due to hash issues
   metalsJava8 = pkgs.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
   bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
@@ -69,11 +62,13 @@ in {
       customizations.polybar-launcher
       customizations.setup-resolution
       evince
+      noisetorch
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
       metalsJava8
       nix-prefetch-git
+      openconnect
       openjdk8
       sbtJava8
       slack-dark
