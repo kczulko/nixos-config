@@ -5,15 +5,19 @@ let
     fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
     ){ config = { allowUnfree = true; }; };
 
-  secrets = import ../../secrets.nix;
-
+  secrets        = import ../../secrets.nix;
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
+  # TODO: fix with overlay
   sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
 
-  # cannot build derivation unstable.metals due to hash issues
-  metalsJava8 = pkgs.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
+  metalsJava8 = unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
   bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
+
+  # for cisco vpn connection
+  openconnect-sso = import (
+    fetchTarball https://github.com/kczulko/openconnect-sso/archive/15114b75d6735ce723b843a4e804dc74efd4073b.tar.gz
+  );
 
 in {
 
@@ -55,20 +59,19 @@ in {
     };
     home.packages = with pkgs; [
       # customizations.metals
-      bat
       bloopJava8
       cabal2nix
       calcurse
       customizations.polybar-launcher
       customizations.setup-resolution
       evince
-      noisetorch
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
       metalsJava8
       nix-prefetch-git
-      openconnect
+      noisetorch
+      openconnect-sso
       openjdk8
       sbtJava8
       slack-dark
@@ -79,6 +82,7 @@ in {
       vlc
       xe-guest-utilities
       zoom-us
+bat
     ];
 
     programs = {
