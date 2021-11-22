@@ -67,6 +67,7 @@ in
     git
     git-crypt
     git-lfs
+    htop
     lshw
     lsof
     mkpasswd
@@ -99,6 +100,7 @@ in
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+
     media-session.config.bluez-monitor.rules = [
       {
         # Matches all cards
@@ -128,7 +130,7 @@ in
   };
 
   # Enable sound.
-  config.sound.enable = true;
+  # config.sound.enable = true;
   config.hardware = {
 
     bluetooth = {

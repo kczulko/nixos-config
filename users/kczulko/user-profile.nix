@@ -8,15 +8,9 @@ let
   secrets        = import ../../secrets.nix;
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
-  # TODO: fix with overlay
-  sbtJava8 = pkgs.sbt.override { jre = pkgs.openjdk8; };
-
-  metalsJava8 = unstable.metals.override { jdk = pkgs.openjdk8; jre = pkgs.openjdk8; };
-  bloopJava8 = pkgs.bloop.override { jre = pkgs.openjdk8; };
-
   # for cisco vpn connection
   openconnect-sso = import (
-    fetchTarball https://github.com/kczulko/openconnect-sso/archive/15114b75d6735ce723b843a4e804dc74efd4073b.tar.gz
+    fetchTarball https://github.com/kczulko/openconnect-sso/archive/aa2264471b0a02eddba54b995fbb3d5daca07c12.tar.gz
   );
 
 in {
@@ -58,8 +52,7 @@ in {
       TERM = "xterm-256color";
     };
     home.packages = with pkgs; [
-      # customizations.metals
-      bloopJava8
+      bloop
       cabal2nix
       calcurse
       customizations.polybar-launcher
@@ -68,12 +61,12 @@ in {
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
-      metalsJava8
+      unstable.metals
       nix-prefetch-git
       noisetorch
       openconnect-sso
-      openjdk8
-      sbtJava8
+      openjdk
+      sbt
       slack-dark
       unrar
       unstable.cabal-install

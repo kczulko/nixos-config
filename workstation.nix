@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware/workstation.nix
+      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/common/cpu/intel"
       ./common.nix
       ./desktops/default-desktop.nix
       ./users/kczulko/user-profile.nix
@@ -20,6 +21,8 @@
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
 
+  virtualisation.docker.enable = true;
+
   # enable virtualisation
   #virtualisation.virtualbox.host.enable = true;
   #users.extraGroups.vboxusers.members = [ "kczulko" ];
@@ -29,12 +32,12 @@
     useDHCP = false;
     interfaces = {
       enp2s0.useDHCP = true;
-      wlp0s20f0u6.useDHCP = true;
+      wlp0s20f0u5.useDHCP = true;
     };
     # required by zfs
     hostId ="acef45ac";
     hostName = "workstation";
-    wireless.interfaces = [ "wlp0s20f0u6" ];
+    wireless.interfaces = [ "wlp0s20f0u5" ];
     # Network (Wireless and cord)
     networkmanager.enable = true;
 
