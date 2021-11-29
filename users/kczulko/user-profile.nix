@@ -52,6 +52,7 @@ in {
       TERM = "xterm-256color";
     };
     home.packages = with pkgs; [
+      bat
       bloop
       cabal2nix
       calcurse
@@ -61,21 +62,21 @@ in {
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
-      unstable.metals
       nix-prefetch-git
       noisetorch
       openconnect-sso
       openjdk
       sbt
+      signal-desktop
       slack-dark
       unrar
       unstable.cabal-install
       unstable.ghc
       unstable.haskell-language-server
+      unstable.metals
       vlc
       xe-guest-utilities
       zoom-us
-bat
     ];
 
     programs = {

@@ -78,6 +78,7 @@ in
     ranger
     silver-searcher
     vim
+    unzip
     wget
   ];
 
