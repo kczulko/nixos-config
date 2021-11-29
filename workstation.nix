@@ -18,6 +18,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.copyKernels = true;
+  boot.kernelParams = [
+    "i915.enable_psr=0" # https://bbs.archlinux.org/viewtopic.php?id=268244
+  ];
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
 

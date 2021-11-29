@@ -3,7 +3,7 @@ let
 
   unstable = import (
     fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
-    ){ config = { allowUnfree = true; }; };
+  ){ config = { allowUnfree = true; }; };
 
   secrets        = import ../../secrets.nix;
   customizations = import ./customizations/all.nix { inherit pkgs; };
@@ -12,6 +12,10 @@ let
   openconnect-sso = import (
     fetchTarball https://github.com/kczulko/openconnect-sso/archive/aa2264471b0a02eddba54b995fbb3d5daca07c12.tar.gz
   );
+
+  haskell-language-server-1-5-0-0 = (import (
+    fetchTarball https://github.com/haskell/haskell-language-server/archive/bd0046b7089e32e309f7b29ee6ec1a808ca1db86.tar.gz
+  )).defaultPackage.x86_64-linux;
 
 in {
 
@@ -72,7 +76,8 @@ in {
       unrar
       unstable.cabal-install
       unstable.ghc
-      unstable.haskell-language-server
+      #unstable.haskell-language-server
+      haskell-language-server-1-5-0-0
       unstable.metals
       vlc
       xe-guest-utilities
