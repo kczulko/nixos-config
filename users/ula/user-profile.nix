@@ -7,7 +7,7 @@ let
 
   secrets = import ../../secrets.nix;
 
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz;
 
   hmLib = (import "${home-manager}/modules/lib/gvariant.nix" { lib = pkgs.lib; });
 
@@ -43,6 +43,8 @@ in {
 
   home-manager.users.ula = {
 
+    services.udiskie.enable = true;
+
     home = {
       file = {
         ".Xresources".source = ../kczulko/config-files/.Xresources;
@@ -65,6 +67,7 @@ in {
         gnome3.gnome-screenshot
         gnome3.gnome-session
         gnome3.nautilus
+        gnome3.gedit
         gnomeExtensions.appindicator
         gnomeExtensions.dash-to-dock
         gscan2pdf
@@ -79,6 +82,7 @@ in {
       enable = true;
       windowManager.command = ''
         gnome-session
+        setup-resolution
       '';
     };
 
@@ -95,7 +99,7 @@ in {
 
       "org/gnome/desktop/input-sources" = {
         "current" = "uint32 0";
-        "sources" = [ (hmLib.mkTuple [ "xkb" "us" ]) ];
+        "sources" = [ (hmLib.mkTuple [ "xkb" "pl" ]) ];
         "xkb-options" = [ "terminate:ctrl_alt_bksp" "lv3:ralt_switch" "caps:ctrl_modifier" ];
       };
 
@@ -109,6 +113,14 @@ in {
     };
     
     programs = {
+#      autorandr = {
+#        enable = true;
+#        hooks = {
+#          postswitch = {
+#            "setup-resolution" = builtins.readFile ../kczulko/config-files/.screenlayout/setup.sh;
+#          };
+#        };
+#      };
       direnv = {
         enable = true;
         nix-direnv.enable = true;

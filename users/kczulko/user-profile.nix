@@ -5,12 +5,12 @@ let
     fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
   ){ config = { allowUnfree = true; }; };
 
-  secrets        = import ../../secrets.nix;
+  secrets        = (import ../../secrets.nix).users.kczulko;
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   # for cisco vpn connection
   openconnect-sso = import (
-    fetchTarball https://github.com/kczulko/openconnect-sso/archive/aa2264471b0a02eddba54b995fbb3d5daca07c12.tar.gz
+    fetchTarball https://github.com/kczulko/openconnect-sso/archive/955359e8cae79b8db9b6daf08006a2fc1708b554.tar.gz
   );
 
   haskell-language-server = (import (
@@ -38,7 +38,7 @@ in {
     shell = pkgs.lib.mkForce pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    hashedPassword = secrets.users.kczulko.hashedPassword;
+    hashedPassword = secrets.hashedPassword;
   };
 
   home-manager.users.kczulko = {
@@ -112,7 +112,7 @@ in {
       git = {
         enable = true;
         userName  = "kczulko";
-        userEmail = secrets.users.kczulko.email;
+        userEmail = secrets.email;
         aliases = {
           co = "checkout";
           ci = "commit";
