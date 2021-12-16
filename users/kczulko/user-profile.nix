@@ -67,7 +67,7 @@ in {
       gscan2pdf
       ispell
       nix-prefetch-git
-      noisetorch
+      libreoffice
       openconnect-sso
       openjdk
       sbt
@@ -76,7 +76,6 @@ in {
       unrar
       unstable.cabal-install
       unstable.ghc
-      #unstable.haskell-language-server
       haskell-language-server
       unstable.metals
       vlc
