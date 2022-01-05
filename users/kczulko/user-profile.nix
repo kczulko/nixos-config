@@ -66,6 +66,7 @@ in {
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
+      kubectl
       nix-prefetch-git
       libreoffice
       openconnect-sso
@@ -148,10 +149,10 @@ in {
         oh-my-zsh = {
           enable = true;
           plugins = [
-            # "docker"
+            "docker"
             # "fd"
             "git"
-            # "kubectl"
+            "kubectl"
             # "ripgrep"
           ];
           theme = "agnoster";
