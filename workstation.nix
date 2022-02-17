@@ -50,6 +50,8 @@
     '';
   };
 
+  services.gvfs.enable = true;
+
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
   services.zfs.autoSnapshot = {
