@@ -1,4 +1,4 @@
-{pkgs,home-manager,...}:
+{pkgs,home-manager,lib,...}:
 let
 
   unstable = import (
@@ -16,6 +16,23 @@ let
   # haskell-language-server = (import (
     # fetchTarball https://github.com/haskell/haskell-language-server/archive/745ef26f406dbdd5e4a538585f8519af9f1ccb09.tar.gz
   # )).defaultPackage.x86_64-linux;
+
+  firefox-profile-defaults = identifier: {
+    id = identifier;
+    settings = {
+      # "general.useragent.override" =
+      "browser.startup.homepage" = "duckduckgo.com";
+      "browser.fullscreen.autohide" = false;
+      # enable userChrome
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+    };
+    userChrome = ''
+       /* Show Bookmarks Toolbar in fullscreen mode */
+       #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
+         visibility: unset !important;
+       }
+    '';
+  };
 
 in {
 
@@ -55,6 +72,9 @@ in {
     home.sessionVariables = {
       TERM = "xterm-256color";
     };
+    home.sessionPath = [
+      "$HOME/.daml/bin"
+    ];
     home.packages = with pkgs; [
       bat
       bloop
@@ -84,7 +104,14 @@ in {
       zoom-us
     ];
 
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "vscode"
+    ];
+
     programs = {
+      vscode = {
+        enable = true;
+      };
       direnv = {
         enable = true;
         nix-direnv.enable = true;
@@ -92,21 +119,8 @@ in {
       firefox = {
         enable = true;
         profiles = {
-          default = {
-            settings = {
-              # "general.useragent.override" =
-              "browser.startup.homepage" = "duckduckgo.com";
-              "browser.fullscreen.autohide" = false;
-              # enable userChrome
-              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            };
-            userChrome = ''
-               /* Show Bookmarks Toolbar in fullscreen mode */
-               #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
-                 visibility: unset !important;
-               }
-            '';
-          };
+          default = firefox-profile-defaults 0;
+          digital-asset = firefox-profile-defaults 1;
         };
       };
       git = {
@@ -141,6 +155,14 @@ in {
       zsh = {
         enable = true;
         enableAutosuggestions = true;
+
+        # Zsh completions installed for Daml assistant.
+        # To use them, add '~/.daml/zsh' to your $fpath, e.g. by adding the following
+        # to the beginning of '~/.zshrc' before you call 'compinit':
+        # fpath=(~/.daml/zsh $fpath)
+        initExtraBeforeCompInit = ''
+          fpath=(~/.daml/zsh $fpath)
+        '';
         shellAliases = {
           ll = "ls -la";
           rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/kczulko/Projects/nixos-config/current.nix";
