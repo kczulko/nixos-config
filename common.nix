@@ -83,6 +83,7 @@ in
     python27
     ranger
     silver-searcher
+    usbutils
     vim
     unzip
     wget
