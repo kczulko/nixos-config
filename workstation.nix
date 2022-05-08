@@ -35,7 +35,7 @@
     useDHCP = false;
     interfaces = {
       enp2s0.useDHCP = true;
-      wlp0s20f0u5.useDHCP = true;
+      wlp4s0u2.useDHCP = true;
     };
     # required by zfs
     hostId ="acef45ac";

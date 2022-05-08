@@ -17,23 +17,6 @@ let
     # fetchTarball https://github.com/haskell/haskell-language-server/archive/745ef26f406dbdd5e4a538585f8519af9f1ccb09.tar.gz
   # )).defaultPackage.x86_64-linux;
 
-  firefox-profile-defaults = identifier: {
-    id = identifier;
-    settings = {
-      # "general.useragent.override" =
-      "browser.startup.homepage" = "duckduckgo.com";
-      "browser.fullscreen.autohide" = false;
-      # enable userChrome
-      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-    };
-    userChrome = ''
-       /* Show Bookmarks Toolbar in fullscreen mode */
-       #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
-         visibility: unset !important;
-       }
-    '';
-  };
-
 in {
 
   users.users.kczulko = {
@@ -129,7 +112,21 @@ in {
           multi-account-containers
         ];
         profiles = {
-          default = firefox-profile-defaults 0;
+          default = {
+            settings = {
+              # "general.useragent.override" =
+              "browser.startup.homepage" = "duckduckgo.com";
+              "browser.fullscreen.autohide" = false;
+              # enable userChrome
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            };
+            userChrome = ''
+              /* Show Bookmarks Toolbar in fullscreen mode */
+              #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
+                visibility: unset !important;
+              }
+            '';
+          };
         };
       };
       git = {
