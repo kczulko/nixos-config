@@ -66,6 +66,7 @@ in {
       customizations.polybar-launcher
       customizations.setup-resolution
       evince
+      file
       gnome3.gnome-screenshot
       gscan2pdf
       ispell
@@ -149,6 +150,7 @@ in {
           core = {
             # cat instead of less for git diff
             pager = "cat";
+            autocrlf = "false";
           };
           "filter \"lfs\"" = {
             process = "git-lfs filter-process";

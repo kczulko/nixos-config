@@ -169,7 +169,7 @@ in
         {
           name = "DCP-J105";
           description = "Brother DCP-J105";
-          deviceUri = "ipp://BRW94533072B538.local:631/ipp/print";
+          deviceUri = "dnssd://Brother%20DCP-J105._ipp._tcp.local/?uuid=e3248000-80ce-11db-8000-94533072b538";
           model = "brother_dcpj105_printer_en.ppd";
         }
       ];
