@@ -2,7 +2,7 @@
 
 let
 
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz;
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-22.05.tar.gz;
 
 in
 {
@@ -95,7 +95,7 @@ in
   config.services.avahi.enable = true;
   config.services.avahi.nssmdns = true;
 
-  config.services.blueman.enable = true;  #bluetooth
+  config.services.blueman.enable = true;  # bluetooth
 
   # mount mtp devices
   config.services.gvfs.enable = true;

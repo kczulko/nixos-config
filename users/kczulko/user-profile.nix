@@ -150,7 +150,6 @@ in {
           core = {
             # cat instead of less for git diff
             pager = "cat";
-            autocrlf = "false";
           };
           "filter \"lfs\"" = {
             process = "git-lfs filter-process";
