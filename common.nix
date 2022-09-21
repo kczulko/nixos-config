@@ -44,6 +44,8 @@ in
       keep-outputs = true
       keep-derivations = true
     '';
+
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   config.i18n.defaultLocale = "en_US.UTF-8";
