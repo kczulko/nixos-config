@@ -9,9 +9,9 @@ let
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   # for cisco vpn connection
-  openconnect-sso = import (
-    fetchTarball https://github.com/kczulko/openconnect-sso/archive/955359e8cae79b8db9b6daf08006a2fc1708b554.tar.gz
-  );
+  # openconnect-sso = import (
+    # fetchTarball https://github.com/kczulko/openconnect-sso/archive/955359e8cae79b8db9b6daf08006a2fc1708b554.tar.gz
+  # );
 
   # haskell-language-server = (import (
     # fetchTarball https://github.com/haskell/haskell-language-server/archive/745ef26f406dbdd5e4a538585f8519af9f1ccb09.tar.gz
@@ -73,7 +73,7 @@ in {
       kubectl
       nix-prefetch-git
       libreoffice
-      openconnect-sso
+      # openconnect-sso
       openjdk
       sbt
       signal-desktop
@@ -111,6 +111,7 @@ in {
         enable = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           multi-account-containers
+          consent-o-matic # disabling cookie popups
         ];
         profiles = {
           default = {
