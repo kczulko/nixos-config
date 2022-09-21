@@ -7,7 +7,7 @@ let
 
   secrets = import ../../secrets.nix;
 
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.11.tar.gz;
+  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-22.05.tar.gz;
 
   hmLib = (import "${home-manager}/modules/lib/gvariant.nix" { lib = pkgs.lib; });
 
@@ -62,7 +62,7 @@ in {
         evince
         google-chrome
         gnome3.gnome-control-center
-        gnome3.gnome-tweak-tool
+        gnome3.gnome-tweaks
         gnome3.eog
         gnome3.gnome-screenshot
         gnome3.gnome-session
@@ -75,6 +75,7 @@ in {
         setup-resolution
         unrar
         vlc
+        wine
       ];
     };
 
