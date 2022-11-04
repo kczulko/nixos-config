@@ -111,6 +111,7 @@ in {
         enable = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           multi-account-containers
+          metamask # for ethereum dapp development
           consent-o-matic # disabling cookie popups
         ];
         profiles = {
