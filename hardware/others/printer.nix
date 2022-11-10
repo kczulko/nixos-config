@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, cups, dpkg, gnused, gawk, makeWrapper, ghostscript, file
+{ lib, stdenv, glibc, fetchurl, cups, dpkg, gnused, gawk, makeWrapper, ghostscript, file
 , a2ps, coreutils, perl, gnugrep, which
 }:
 
@@ -46,10 +46,10 @@ stdenv.mkDerivation {
     wrapProgram $dir/lpd/psconvertij2 \
       --prefix PATH : ${lib.makeBinPath [ gnused gawk ]}
 
-    patchelf --set-interpreter ${stdenv.glibc.out}/lib/ld-linux.so.2 $dir/lpd/brdcpj105filter
-    patchelf --set-interpreter ${stdenv.glibc.out}/lib/ld-linux.so.2 $out/usr/bin/brprintconf_dcpj105 
+    patchelf --set-interpreter ${glibc.out}/lib/ld-linux.so.2 $dir/lpd/brdcpj105filter
+    patchelf --set-interpreter ${glibc.out}/lib/ld-linux.so.2 $out/usr/bin/brprintconf_dcpj105
 
-    patchelf --set-interpreter ${stdenv.glibc.out}/lib/ld-linux.so.2 "$dir/cupswrapper/brcupsconfpt1"
+    patchelf --set-interpreter ${glibc.out}/lib/ld-linux.so.2 "$dir/cupswrapper/brcupsconfpt1"
 
     mkdir -p $out/lib/cups/filter/
     ln -s $dir/lpd/filterdcpj105 $out/lib/cups/filter/brother_lpdwrapper_dcpj105

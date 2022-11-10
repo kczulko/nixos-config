@@ -1,2 +1,1 @@
-secrets.nix
-current.nix
+secrets/secrets.nix

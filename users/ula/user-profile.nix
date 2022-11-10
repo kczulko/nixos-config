@@ -1,15 +1,5 @@
-{pkgs, home-manager, ...}:
+{pkgs, config, hmLib, latest-nixpkgs, ...}:
 let
-
-  unstable = import (
-    fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
-    ){ config = { allowUnfree = true; }; };
-
-  secrets = import ../../secrets.nix;
-
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-22.05.tar.gz;
-
-  hmLib = (import "${home-manager}/modules/lib/gvariant.nix" { lib = pkgs.lib; });
 
   setup-resolution = import ../kczulko/customizations/setup-resolution.nix { pkgs = pkgs; };
 
@@ -38,7 +28,7 @@ in {
     shell = pkgs.lib.mkForce pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    hashedPassword = secrets.users.ula.hashedPassword;
+    passwordFile = config.age.secrets.ula-pass.path;
   };
 
   home-manager.users.ula = {
@@ -100,7 +90,7 @@ in {
 
       "org/gnome/desktop/input-sources" = {
         "current" = "uint32 0";
-        "sources" = [ (hmLib.mkTuple [ "xkb" "pl" ]) ];
+        "sources" = [ (hmLib.gvariant.mkTuple [ "xkb" "pl" ]) ];
         "xkb-options" = [ "terminate:ctrl_alt_bksp" "lv3:ralt_switch" "caps:ctrl_modifier" ];
       };
 
@@ -149,7 +139,7 @@ in {
       git = {
         enable = true;
         userName  = "uullcciiaa";
-        userEmail = secrets.users.ula.email;
+        userEmail = pkgs.lib.readFile config.age.secrets.ula-email.path;
         aliases = {
           co = "checkout";
           ci = "commit";
@@ -184,13 +174,7 @@ in {
         };
         oh-my-zsh = {
           enable = true;
-          plugins = [
-            # "docker"
-            # "fd"
-            "git"
-            # "kubectl"
-            # "ripgrep"
-          ];
+          plugins = [ "git" ];
           theme = "agnoster";
         };
       };

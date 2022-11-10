@@ -5,15 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      "${builtins.fetchGit { url = "https://github.com/NixOs/nixos-hardware.git"; }}/lenovo/thinkpad/x1"
-      ./hardware/thinkpad.nix
-      ./common.nix
-      ./desktops/default-desktop.nix
-      ./users/kczulko/user-profile.nix
-      ./users/ula/user-profile.nix
-    ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -71,12 +62,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  # };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

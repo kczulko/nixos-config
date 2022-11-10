@@ -1,11 +1,6 @@
-{pkgs,home-manager,lib,...}:
+{ config, pkgs, lib, latest-nixpkgs, ...}:
 let
 
-  unstable = import (
-    fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
-  ){ config = { allowUnfree = true; }; };
-
-  secrets        = (import ../../secrets.nix).users.kczulko;
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   # for cisco vpn connection
@@ -38,7 +33,7 @@ in {
     shell = pkgs.lib.mkForce pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    hashedPassword = secrets.hashedPassword;
+    passwordFile = config.age.secrets.kczulko-pass.path;
   };
 
   home-manager.users.kczulko = {
@@ -79,25 +74,14 @@ in {
       signal-desktop
       slack-dark
       unrar
-      unstable.cabal-install
-      unstable.ghc
-      unstable.haskell-language-server
-      unstable.metals
+      latest-nixpkgs.cabal-install
+      latest-nixpkgs.ghc
+      latest-nixpkgs.haskell-language-server
+      latest-nixpkgs.metals
       vlc
       xe-guest-utilities
       zoom-us
     ];
-
-    nixpkgs.config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "vscode"
-      ];
-      config.packageOverrides = pkgs: {
-        nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-          inherit pkgs;
-        };
-      };
-    };
 
     programs = {
       vscode = {
@@ -109,7 +93,7 @@ in {
       };
       firefox = {
         enable = true;
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions = with config.nur.repos.rycee.firefox-addons; [
           multi-account-containers
           metamask # for ethereum dapp development
           consent-o-matic # disabling cookie popups
@@ -135,7 +119,7 @@ in {
       git = {
         enable = true;
         userName  = "kczulko";
-        userEmail = secrets.email;
+        userEmail = pkgs.lib.readFile config.age.secrets.kczulko-email.path;
         aliases = {
           co = "checkout";
           ci = "commit";
@@ -174,7 +158,8 @@ in {
         '';
         shellAliases = {
           ll = "ls -la";
-          rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/kczulko/Projects/nixos-config/current.nix";
+          # assumes that hostname is the same as flake entry
+          rebuild-nixos = "sudo nixos-rebuild switch --flake /home/kczulko/Projects/nixos-config/ --impure";
           restart-xsession = "systemctl --user stop graphical-session.target";
         };
         oh-my-zsh = {

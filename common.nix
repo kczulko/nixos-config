@@ -1,36 +1,22 @@
-{ config, pkgs, lib, ... }:
-
-let
-
-  home-manager = fetchTarball https://github.com/rycee/home-manager/archive/release-22.05.tar.gz;
-
-in
+{ pkgs, config, lib, ... }:
 {
-  imports = [
-    <nixpkgs/nixos/modules/services/hardware/sane_extra_backends/brscan4.nix>
-    (import "${home-manager}/nixos")
-  ];
 
-  config = {
-    nixpkgs.config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "google-chrome"
-        "brscan4"
-        "brother-udev-rule-type1"
-        "brscan4-etc-files"
-        "unrar"
-        "slack"
-        "zoom"
-      ];
-      packageOverrides = pkgs: {
-        nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-          inherit pkgs;
-        };
-      };
-    };
+  nix = {
+    package = pkgs.nixFlakes;
+
+    # direnv "cache" setup + flakes enabled
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '' + pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
+           "experimental-features = nix-command flakes";
   };
 
-  config.nix = {
+  # Ensure Home Manager plays well with flakes
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
+  nix = {
 
     # Clean up nix gc
     gc = {
@@ -38,32 +24,22 @@ in
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
-
-    # direnv "cache" setup
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-    '';
-
-    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
-  config.i18n.defaultLocale = "en_US.UTF-8";
-  config.console = {
-    font = "Lat2-Terminus16";
-    keyMap = "pl";
-  };
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.font = "Lat2-Terminus16";
+  console.keyMap = "pl";
 
-  config.programs.bash = {
+  programs.bash = {
     enableCompletion = true;
   };
 
-    # Set your time zone.
-  config.time.timeZone = "Europe/Warsaw";
+  # Set your time zone.
+  time.timeZone = "Europe/Warsaw";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  config.environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     alacritty # fast rust terminal emulator
     arandr # Front End for xrandr
     binutils-unwrapped
@@ -92,17 +68,17 @@ in
   ];
 
   # Enable CUPS to print documents.
-  config.services.printing.enable = true;
-  config.services.printing.drivers = [ (pkgs.callPackage ./hardware/others/printer.nix {}) ];
-  config.services.avahi.enable = true;
-  config.services.avahi.nssmdns = true;
+  services.printing.enable = true;
+  services.printing.drivers = [ (pkgs.callPackage ./hardware/others/printer.nix {}) ];
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
 
-  config.services.blueman.enable = true;  # bluetooth
+  services.blueman.enable = true;  # bluetooth
 
   # mount mtp devices
-  config.services.gvfs.enable = true;
+  services.gvfs.enable = true;
 
-  config.services.pipewire = {
+  services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
@@ -144,7 +120,7 @@ in
 
   # Enable sound.
   # config.sound.enable = true;
-  config.hardware = {
+  hardware = {
 
     bluetooth = {
       enable = true;

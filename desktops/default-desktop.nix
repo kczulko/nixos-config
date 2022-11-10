@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, latest-nixpkgs, ... }:
 
 let
 
-  unstable = import (
-    fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
-    ){ config = { allowUnfree = true; }; };
+  # unstable = import (
+    # fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
+    # ){ config = { allowUnfree = true; }; };
 
   i3lock-pixeled-fixed = pkgs.i3lock-pixeled.overrideDerivation (oldAttrs: rec {
     patchPhase = oldAttrs.patchPhase + ''
@@ -43,7 +43,7 @@ in {
     font-awesome_4
     terminus_font
     powerline-fonts
-    (unstable.nerdfonts.override {
+    (latest-nixpkgs.nerdfonts.override {
       fonts = ["Hack"];
     })
   ];
