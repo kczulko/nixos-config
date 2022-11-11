@@ -1,25 +1,34 @@
-# nixos-config
-Config for my nixos envs
+# kczulko nixos-config
 
-## Setup:
+Config for my [NixOS](www.nixos.org) setups.
 
-1. ~~Create `current.nix` link pointing to actual nix configuration.~~
+## Deployment steps
 
-```bash
-ln -sf <path-to-nixos-repo>/<current-hardware-setup.nix> ./current.nix
+All steps executed as `root`.
+
+```
+$ ####################
+$ # clone nixos project
+$ git clone git@github.com:kczulko/nixos-config.git
+$ ####################
+$ # upload private key and place it under /root/.ssh
+$ mv id_ed25519 /root/.ssh/
+$ ####################
+$ # build configuration by choosing appropirate setup, e.g. workstation:
+$ nixos-rebuild switch --flake ./nixos-config#workstation --impure
 ```
 
-2. ~~Generate `mkpasswd -m sha-512` and put it to secret.nix into project dir:~~
+## Secrets management
 
-```bash
-cat secrects.nix
-{
-  users = {
-    kczulko = {
-      email = "...";
-      hashedPassword = "...";
-    };
-  };
-}
-```
+This repository is using [`agenix`](www.github.com/rynantm/agenix) for secrets management.
 
+In order to add a new secret use [this guideline](https://github.com/ryantm/agenix/blob/a630400067c6d03c9b3e0455347dc8559db14288/README.md#tutorial) 
+from `agenix` repository.
+
+For hashed user password generation, please use following command: `mkpasswd -m sha-512`.
+
+## Shenanigans
+
+There are some issues when obtaining `agenix` secret for an entry which is not a file. Pure mode flakes evaluation
+does not allow to e.g. check for OS paths existence, so e.g. `builtins.pathExists` evaluates to `false`.
+This is in general the reason why `--impure` is used.
