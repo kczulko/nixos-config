@@ -31,4 +31,16 @@ For hashed user password generation, please use following command: `mkpasswd -m 
 
 There are some issues when obtaining `agenix` secret for an entry which is not a file. Pure mode flakes evaluation
 does not allow to e.g. check for OS paths existence, so e.g. `builtins.pathExists` evaluates to `false`.
-This is in general the reason why `--impure` is used.
+This is in general the reason why `--impure` is used. Moreover, adding new secret and assigning it to a `string`
+field, may throw an error due to absence of a newly added secret file. Therefore following guards were added here:
+
+```nix
+let
+  new-secret-path = config.age.secrets.your-new-secret.path;
+in
+  lib.strings.optionalString (lib.pathExists new-secret-path)
+    (lib.readFile new-secret-path)
+```
+
+which for initial evaluation returns an empty string (when path does not exist). It means that while introducing
+new secret, one may have to run `nixos-rebuild ...` twice... (sic!).
