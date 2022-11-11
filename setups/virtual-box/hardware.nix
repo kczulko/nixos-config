@@ -17,10 +17,10 @@
     };
 
   swapDevices = [ ];
-  
+
   nix.maxJobs = lib.mkDefault 1;
 
   nixpkgs.config.allowUnfree = true;
-  virtualisation.virtualbox.host.enable = true; 
+  virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.guest.enable = true;
 }

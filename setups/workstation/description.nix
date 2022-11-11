@@ -8,8 +8,11 @@
   boot.kernelParams = [
     "i915.enable_psr=0" # https://bbs.archlinux.org/viewtopic.php?id=268244
   ];
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
+  # package marked as broken!
+  # boot.extraModulePackages = with config.boot.kernelPackages; [ rtl88xxau-aircrack ];
 
   virtualisation.docker.enable = true;
 
@@ -82,4 +85,3 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
 }
-

@@ -49,7 +49,8 @@
           nur.nixosModules.nur
           agenix.nixosModule
           ./secrets/age-secrets.nix
-          ./common.nix
+          ./modules/common.nix
+          ./modules/default-desktop.nix
         ];
       };
 
@@ -57,22 +58,18 @@
         thinkpad = {
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-x1
-            ./hardware/thinkpad.nix
-            ./desktops/default-desktop.nix
+            (import ./setups "thinkpad")
             ./users/kczulko/user-profile.nix
             ./users/ula/user-profile.nix
-            ./thinkpad.nix
           ];
         };
 
         workstation = {
           modules = [
-            # nixos-hardware.nixosModules.common-cpu-intel
-            # nixos-hardware.nixosModules.common-gpu-intel
-            ./hardware/workstation.nix
-            ./desktops/default-desktop.nix
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-intel
+            (import ./setups "workstation")
             ./users/kczulko/user-profile.nix
-            ./workstation.nix
           ];
         };
       };

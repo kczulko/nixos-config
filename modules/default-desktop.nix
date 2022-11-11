@@ -1,19 +1,5 @@
 { config, pkgs, latest-nixpkgs, ... }:
-
-let
-
-  # unstable = import (
-    # fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
-    # ){ config = { allowUnfree = true; }; };
-
-  i3lock-pixeled-fixed = pkgs.i3lock-pixeled.overrideDerivation (oldAttrs: rec {
-    patchPhase = oldAttrs.patchPhase + ''
-      substituteInPlace i3lock-pixeled \
-        --replace '# take the actual screenshot' 'rm $IMGFILE 2> /dev/null'
-    '';
-  });
-
-in {
+{
   services = {
     # For checking power status
     upower.enable = true;
@@ -31,7 +17,7 @@ in {
           dmenu
           feh
           i3status
-          i3lock-pixeled-fixed
+          (pkgs.callPackage ../pkgs/i3-lock-pixeled.nix {})
           polybarFull
           rofi
         ];

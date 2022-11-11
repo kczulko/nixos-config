@@ -69,7 +69,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ (pkgs.callPackage ./hardware/others/printer.nix {}) ];
+  services.printing.drivers = [ (pkgs.callPackage ../pkgs/dcpj105-printer.nix {}) ];
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
 
