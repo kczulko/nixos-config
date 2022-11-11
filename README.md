@@ -44,3 +44,7 @@ in
 
 which for initial evaluation returns an empty string (when path does not exist). It means that while introducing
 new secret, one may have to run `nixos-rebuild ...` twice... (sic!). Maybe [this](https://github.com/jordanisaacs/homeage) project may help here.
+
+## Inspiration intensifies
+
+Jack of all trades, master of some: https://github.com/AleksanderGondek/nixos-config
