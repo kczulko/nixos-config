@@ -119,7 +119,12 @@ in {
       git = {
         enable = true;
         userName  = "kczulko";
-        userEmail = pkgs.lib.readFile config.age.secrets.kczulko-email.path;
+        userEmail =
+          let
+            email-secret-path = config.age.secrets.kczulko-email.path;
+          in
+            lib.strings.optionalString (lib.pathExists email-secret-path)
+              (lib.readFile email-secret-path);
         aliases = {
           co = "checkout";
           ci = "commit";

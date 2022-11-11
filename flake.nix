@@ -53,15 +53,28 @@
         ];
       };
 
-      hosts.thinkpad = {
-        modules = [
-          nixos-hardware.nixosModules.lenovo-thinkpad-x1
-          ./hardware/thinkpad.nix
-          ./desktops/default-desktop.nix
-          ./users/kczulko/user-profile.nix
-          ./users/ula/user-profile.nix
-          ./thinkpad.nix
-        ];
+      hosts = {
+        thinkpad = {
+          modules = [
+            nixos-hardware.nixosModules.lenovo-thinkpad-x1
+            ./hardware/thinkpad.nix
+            ./desktops/default-desktop.nix
+            ./users/kczulko/user-profile.nix
+            ./users/ula/user-profile.nix
+            ./thinkpad.nix
+          ];
+        };
+
+        workstation = {
+          modules = [
+            # nixos-hardware.nixosModules.common-cpu-intel
+            # nixos-hardware.nixosModules.common-gpu-intel
+            ./hardware/workstation.nix
+            ./desktops/default-desktop.nix
+            ./users/kczulko/user-profile.nix
+            ./workstation.nix
+          ];
+        };
       };
     };
 }
