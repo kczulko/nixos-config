@@ -43,4 +43,4 @@ in
 ```
 
 which for initial evaluation returns an empty string (when path does not exist). It means that while introducing
-new secret, one may have to run `nixos-rebuild ...` twice... (sic!).
+new secret, one may have to run `nixos-rebuild ...` twice... (sic!). Maybe [this](https://github.com/jordanisaacs/homeage) project may help here.
