@@ -1,4 +1,4 @@
-{pkgs, config, hmLib, latest-nixpkgs, ...}:
+{pkgs, config, lib, hmLib, latest-nixpkgs, ...}:
 let
 
   setup-resolution = import ../kczulko/customizations/setup-resolution.nix { pkgs = pkgs; };
@@ -139,7 +139,12 @@ in {
       git = {
         enable = true;
         userName  = "uullcciiaa";
-        userEmail = pkgs.lib.readFile config.age.secrets.ula-email.path;
+        userEmail =
+          let
+            email-secret-path = config.age.secrets.ula-email.path;
+          in
+            lib.strings.optionalString (lib.pathExists email-secret-path)
+              (lib.readFile email-secret-path);
         aliases = {
           co = "checkout";
           ci = "commit";
