@@ -68,6 +68,7 @@ in {
       kubectl
       nix-prefetch-git
       libreoffice
+      masterpdfeditor4
       # openconnect-sso
       openjdk
       sbt
