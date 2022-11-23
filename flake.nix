@@ -54,6 +54,8 @@
         ];
       };
 
+      sharedOverlays = import ./overlays { inherit nixpkgs latest-nixpkgs; };
+
       hosts = {
         thinkpad = {
           modules = [
