@@ -90,7 +90,7 @@ in {
       };
       direnv = {
         enable = true;
-        nix-direnv.enable = true;
+        # nix-direnv.enable = true;
       };
       firefox = {
         enable = true;
