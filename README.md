@@ -14,7 +14,7 @@ $ ####################
 $ # upload private key and place it under /root/.ssh
 $ mv id_ed25519 /root/.ssh/
 $ ####################
-$ # build configuration by choosing appropirate setup, e.g. workstation:
+$ # build configuration by choosing appropriate setup, e.g. workstation:
 $ nixos-rebuild switch --flake ./nixos-config#workstation --impure
 ```
 
@@ -30,9 +30,9 @@ For hashed user password generation, please use following command: `mkpasswd -m 
 ## Shenanigans
 
 There are some issues when obtaining `agenix` secret for an entry which is not a file. Pure mode flakes evaluation
-does not allow to e.g. check for OS paths existence, so e.g. `builtins.pathExists` evaluates to `false`.
-This is in general the reason why `--impure` is used. Moreover, adding new secret and assigning it to a `string`
-field, may throw an error due to absence of a newly added secret file. Therefore following guards were added here:
+does not allow to e.g. check for OS paths existence, so e.g. `builtins.pathExists` evaluates to `false` for a pure mode.
+This is in general the reason why `--impure` is used here. Moreover, adding new secret and assigning it to a `string`
+field, may throw an error due to absence of a newly added secret file. Therefore following guards were added:
 
 ```nix
 let
