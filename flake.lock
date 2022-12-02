@@ -20,6 +20,30 @@
         "type": "github"
       }
     },
+    "daml-mode": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils-plus",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1669739595,
+        "narHash": "sha256-PeQQaHw8GvmBFdiu3U2OHSGlhWaO9dCo8zRvDgWMiwY=",
+        "owner": "kczulko",
+        "repo": "daml-mode-flake",
+        "rev": "87fdf05c361e4459699838e00135324495edc84b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kczulko",
+        "repo": "daml-mode-flake",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1644229661,
@@ -139,6 +163,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "daml-mode": "daml-mode",
         "flake-utils-plus": "flake-utils-plus",
         "home-manager": "home-manager",
         "latest-nixpkgs": "latest-nixpkgs",

@@ -17,9 +17,16 @@
 
     nur.url = "github:nix-community/NUR";
 
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    daml-mode = {
+      url = "github:kczulko/daml-mode-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils-plus/flake-utils";
+    };
 
   };
 
@@ -54,7 +61,7 @@
         ];
       };
 
-      sharedOverlays = import ./overlays { inherit nixpkgs latest-nixpkgs; };
+      sharedOverlays = import ./overlays { inherit inputs latest-nixpkgs; };
 
       hosts = {
         thinkpad = {

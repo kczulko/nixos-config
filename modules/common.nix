@@ -45,7 +45,7 @@
     binutils-unwrapped
     brightnessctl # Control screen brightness
     du-dust
-    emacs
+    emacs-kczulko
     fd
     git
     git-crypt
