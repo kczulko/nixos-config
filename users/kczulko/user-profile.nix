@@ -66,6 +66,7 @@ in {
       gscan2pdf
       ispell
       kubectl
+      keepassxc
       nix-prefetch-git
       libreoffice
       masterpdfeditor4
@@ -90,11 +91,12 @@ in {
       };
       direnv = {
         enable = true;
-        # nix-direnv.enable = true;
+        nix-direnv.enable = true;
       };
       firefox = {
         enable = true;
         extensions = with config.nur.repos.rycee.firefox-addons; [
+          keepassxc-browser
           multi-account-containers
           metamask # for ethereum dapp development
           consent-o-matic # disabling cookie popups
