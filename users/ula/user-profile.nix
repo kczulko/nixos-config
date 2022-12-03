@@ -36,6 +36,9 @@ in {
     services.udiskie.enable = true;
 
     home = {
+
+      stateVersion = "22.11";
+
       file = {
         ".Xresources".source = ../kczulko/config-files/.Xresources;
         ".screenlayout/setup.sh".source = ../kczulko/config-files/.screenlayout/setup.sh;

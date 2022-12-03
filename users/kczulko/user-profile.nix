@@ -37,6 +37,9 @@ in {
   };
 
   home-manager.users.kczulko = {
+
+    home.stateVersion = "22.11";
+
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
       ".Xresources".source = ./config-files/.Xresources;

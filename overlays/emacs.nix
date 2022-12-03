@@ -41,9 +41,9 @@ in {
     monokai-theme
     multiple-cursors
     projectile
+    s
     smartparens
     solidity-mode
-    string-edit
     string-inflection
     terraform-mode
     use-package
