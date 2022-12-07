@@ -52,10 +52,6 @@ in {
     yasnippet
     sbt-mode
     flycheck
-    # CAUTION! Do not take nix-mode from melpaStablePackages (1.4.5)
-    # It suffers from following error:
-    # Eager macro-expansion failure: (wrong-number-of-arguments (3 . 4) 2) [2 times]
-    # define-obsolete-function-alias: Wrong number of arguments: (3 . 4), 2
     nix-mode
   ]) ++ (with epkgs.elpaPackages; [
     undo-tree
