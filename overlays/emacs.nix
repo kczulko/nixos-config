@@ -19,6 +19,7 @@ in {
     avy
     bazel
     company
+    docker
     dockerfile-mode
     eno
     envrc
@@ -47,6 +48,7 @@ in {
     string-inflection
     terraform-mode
     use-package
+    use-package-chords
     visual-regexp-steroids
     yaml-mode
     yasnippet

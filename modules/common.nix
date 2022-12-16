@@ -55,6 +55,7 @@
     lshw
     lsof
     mkpasswd
+    multimarkdown
     networkmanagerapplet # NetworkManager in Gnome
     pavucontrol # PulseAudio Volume Control
     psmisc
