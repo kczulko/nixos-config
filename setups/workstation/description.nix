@@ -25,12 +25,12 @@
     useDHCP = false;
     interfaces = {
       enp2s0.useDHCP = true;
-      wlp0s20f0u5.useDHCP = true;
+      wlp9s0.useDHCP = true;
     };
     # required by zfs
     hostId ="acef45ac";
     hostName = "workstation";
-    wireless.interfaces = [ "wlp0s20f0u5" ];
+    wireless.interfaces = [ "wlp9s0" ];
     # Network (Wireless and cord)
     networkmanager.enable = true;
 
