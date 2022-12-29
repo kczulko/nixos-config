@@ -24,8 +24,8 @@
 
     useDHCP = false;
     interfaces = {
-      enp2s0.useDHCP = true;
-      wlp9s0.useDHCP = true;
+      # enp2s0.useDHCP = true;
+      # wlp9s0.useDHCP = true;
     };
     # required by zfs
     hostId ="acef45ac";
@@ -39,6 +39,8 @@
       192.168.0.14 BRW94533072B538.local
     '';
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   services.gvfs.enable = true;
 

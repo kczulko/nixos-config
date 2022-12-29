@@ -12,8 +12,6 @@ in {
 
   emacs-kczulko = emacsWithPackages (epkgs: (with epkgs.melpaStablePackages; [
   ]) ++ (with epkgs.melpaPackages; [
-    # TODO nixify daml mode
-    # pkgs.emacsPackages.trivialBuild
     ace-window
     ag
     avy
@@ -23,6 +21,7 @@ in {
     dockerfile-mode
     eno
     envrc
+    flycheck
     go-mode
     goto-chg
     haskell-mode
@@ -41,8 +40,10 @@ in {
     markdown-mode
     monokai-theme
     multiple-cursors
+    nix-mode
     projectile
     s
+    sbt-mode
     smartparens
     solidity-mode
     string-inflection
@@ -52,9 +53,6 @@ in {
     visual-regexp-steroids
     yaml-mode
     yasnippet
-    sbt-mode
-    flycheck
-    nix-mode
   ]) ++ (with epkgs.elpaPackages; [
     undo-tree
     # auctex         # ; LaTeX mode
