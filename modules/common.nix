@@ -1,5 +1,16 @@
-{ pkgs, config, lib, ... }:
-{
+{ pkgs, config, lib, nurl, ... }:
+let
+
+  recent-qmk-udev-rules = pkgs.qmk-udev-rules.overrideAttrs (final: prev: {
+    src = pkgs.fetchFromGitHub {
+      owner = "qmk";
+      repo = "qmk_firmware";
+      rev = "ff73cb6290271db473899118200a2fbf725cbc85";
+      sha256 = "sha256-n1m7thUYLVyP9Aqk8vUmY35ecYNoxJ/VSbiVXTh/crw=";
+    };
+  });
+
+in {
 
   nix = {
     package = pkgs.nixFlakes;
@@ -66,7 +77,11 @@
     vim
     unzip
     wget
+    qmk
+    nurl
   ];
+
+  services.udev.packages = [ recent-qmk-udev-rules ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

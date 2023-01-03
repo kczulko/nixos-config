@@ -42,10 +42,6 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  services.udev.packages = with pkgs; [
-    qmk-udev-rules # udev rules for qmkg
-  ];
-
   services.gvfs.enable = true;
 
   services.zfs.autoScrub.enable = true;

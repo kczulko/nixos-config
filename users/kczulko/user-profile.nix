@@ -86,7 +86,6 @@ in {
       vlc
       xe-guest-utilities
       zoom-us
-      qmk
     ];
 
     programs = {
@@ -113,7 +112,7 @@ in {
               "browser.fullscreen.autohide" = false;
               # enable userChrome
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-              "ui.systemUsesDarkTheme" = 1;
+              # "ui.systemUsesDarkTheme" = 1;
             };
             userChrome = ''
               /* Show Bookmarks Toolbar in fullscreen mode */

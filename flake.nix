@@ -29,6 +29,9 @@
       inputs.flake-utils.follows = "flake-utils-plus/flake-utils";
     };
 
+    nurl = {
+      url = "github:nix-community/nurl";
+    };
   };
 
   outputs = inputs: with inputs;
@@ -41,7 +44,7 @@
         allowUnfree = true;
       };
 
-      hostDefaults = {
+      hostDefaults = rec {
         system = "x86_64-linux";
         channelName = "nixpkgs";
         extraArgs = {
@@ -51,6 +54,8 @@
           };
 
           hmLib = home-manager.lib.hm;
+
+          nurl = nurl.packages.${system}.default;
         };
         modules = [
           home-manager.nixosModules.home-manager
