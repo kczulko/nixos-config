@@ -29,8 +29,11 @@
       inputs.flake-utils.follows = "flake-utils-plus/flake-utils";
     };
 
-    nurl = {
-      url = "github:nix-community/nurl";
+    nurl.url = "github:nix-community/nurl";
+
+    gsts = {
+      url = "github:kczulko/gsts/9ab56887db7a3f02377e354a81c2c031b8aebcce";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -67,7 +70,9 @@
         ];
       };
 
-      sharedOverlays = import ./overlays { inherit inputs latest-nixpkgs; };
+      sharedOverlays = (import ./overlays { inherit inputs latest-nixpkgs; }) ++ [
+        inputs.gsts.overlays.x86_64-linux
+      ];
 
       hosts = {
         thinkpad = {

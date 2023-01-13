@@ -77,6 +77,44 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "gsts": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "npmlock2nixSrc": "npmlock2nixSrc"
+      },
+      "locked": {
+        "lastModified": 1673553387,
+        "narHash": "sha256-ac4huZmHQOpDDoCMel7LOrXe7mHbsuEL55M8OC+6LxA=",
+        "owner": "kczulko",
+        "repo": "gsts",
+        "rev": "9ab56887db7a3f02377e354a81c2c031b8aebcce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kczulko",
+        "repo": "gsts",
+        "rev": "9ab56887db7a3f02377e354a81c2c031b8aebcce",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -162,6 +200,22 @@
         "type": "github"
       }
     },
+    "npmlock2nixSrc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673447413,
+        "narHash": "sha256-sJM82Sj8yfQYs9axEmGZ9Evzdv/kDcI9sddqJ45frrU=",
+        "owner": "nix-community",
+        "repo": "npmlock2nix",
+        "rev": "9197bbf397d76059a76310523d45df10d2e4ca81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "npmlock2nix",
+        "type": "github"
+      }
+    },
     "nur": {
       "locked": {
         "lastModified": 1667931999,
@@ -200,6 +254,7 @@
         "agenix": "agenix",
         "daml-mode": "daml-mode",
         "flake-utils-plus": "flake-utils-plus",
+        "gsts": "gsts",
         "home-manager": "home-manager",
         "latest-nixpkgs": "latest-nixpkgs",
         "nixos-hardware": "nixos-hardware",

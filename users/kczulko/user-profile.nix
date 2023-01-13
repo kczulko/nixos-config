@@ -67,6 +67,7 @@ in {
       file
       gnome3.gnome-screenshot
       gscan2pdf
+      gsts
       ispell
       kubectl
       keepassxc
@@ -174,6 +175,9 @@ in {
           rebuild-nixos = "sudo nixos-rebuild switch --flake /home/kczulko/Projects/nixos-config/ --impure";
           restart-xsession = "systemctl --user stop graphical-session.target";
         };
+        initExtra = ''
+          unalias gsts
+        '';
         oh-my-zsh = {
           enable = true;
           plugins = [
