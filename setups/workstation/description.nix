@@ -11,6 +11,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # package marked as broken!
   # boot.extraModulePackages = with config.boot.kernelPackages; [ rtl88xxau-aircrack ];
 
@@ -26,7 +27,12 @@
     interfaces = {
       # enp2s0.useDHCP = true;
       # wlp9s0.useDHCP = true;
+      enp2s0.ipv4.addresses = [ {
+        address = "192.168.56.1";
+        prefixLength = 24;
+      }];
     };
+
     # required by zfs
     hostId ="acef45ac";
     hostName = "workstation";
@@ -37,7 +43,15 @@
     # the printer
     extraHosts = ''
       192.168.0.14 BRW94533072B538.local
+      192.168.56.2 raspberrypi
     '';
+
+    firewall = {
+      extraCommands = ''
+        iptables -A FORWARD --in-interface enp2s0 -j ACCEPT
+        iptables --table nat -A POSTROUTING --out-interface wlp9s0 -j MASQUERADE
+      '';
+    };
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
