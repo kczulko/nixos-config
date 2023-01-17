@@ -63,6 +63,7 @@ in {
       calcurse
       customizations.polybar-launcher
       customizations.setup-resolution
+      docker-compose
       evince
       file
       gnome3.gnome-screenshot
