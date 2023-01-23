@@ -56,9 +56,8 @@ in {
     home.sessionPath = [
       "$HOME/.daml/bin"
     ];
-    home.packages = with pkgs; [
+    home.packages = (with pkgs; [
       bat
-      bloop
       cabal2nix
       calcurse
       customizations.polybar-launcher
@@ -81,14 +80,16 @@ in {
       signal-desktop
       slack-dark
       unrar
-      latest-nixpkgs.cabal-install
-      latest-nixpkgs.ghc
-      latest-nixpkgs.haskell-language-server
-      latest-nixpkgs.metals
       vlc
       xe-guest-utilities
       zoom-us
-    ];
+    ]) ++ (with latest-nixpkgs; [
+      bloop
+      cabal-install
+      ghc
+      haskell-language-server
+      metals
+    ]);
 
     programs = {
       vscode = {
