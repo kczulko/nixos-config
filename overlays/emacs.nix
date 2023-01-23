@@ -54,6 +54,7 @@ in {
     yaml-mode
     yasnippet
   ]) ++ (with epkgs.elpaPackages; [
+    tramp
     undo-tree
     # auctex         # ; LaTeX mode
     # beacon         # ; highlight my cursor when scrolling
