@@ -1,4 +1,4 @@
-{ pkgs, config, lib, nurl, ... }:
+{ pkgs, config, latest-nixpkgs, nixpkgs, lib, nurl, ... }:
 let
 
   recent-qmk-udev-rules = pkgs.qmk-udev-rules.overrideAttrs (final: prev: {
@@ -13,21 +13,7 @@ let
 in {
 
   nix = {
-    package = pkgs.nixFlakes;
-
-    # direnv "cache" setup + flakes enabled
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-    '' + pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
-           "experimental-features = nix-command flakes";
-  };
-
-  # Ensure Home Manager plays well with flakes
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-
-  nix = {
+    # package = latest-nixpkgs.nix;
 
     # Clean up nix gc
     gc = {
@@ -35,7 +21,29 @@ in {
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
+
+    # direnv "cache" setup + flakes enabled
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '' + pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes";
+
+    registry.nixpkgs.flake = nixpkgs;
+
+    nixPath = [
+      "nixpkgs=/etc/channels/nixpkgs"
+      "nixos-config=/etc/nixos/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
+
   };
+
+  environment.etc."channels/nixpkgs".source = nixpkgs.outPath;
+
+  # Ensure Home Manager plays well with flakes
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
   console.font = "Lat2-Terminus16";

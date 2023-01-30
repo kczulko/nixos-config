@@ -59,6 +59,8 @@
           hmLib = home-manager.lib.hm;
 
           nurl = nurl.packages.${system}.default;
+
+          inherit nixpkgs;
         };
         modules = [
           home-manager.nixosModules.home-manager
