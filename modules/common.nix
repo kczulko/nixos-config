@@ -89,6 +89,15 @@ in {
     nurl
   ];
 
+  networking.nameservers = [
+    # Cloudflare
+    "1.1.1.1"
+    "1.0.0.1"
+    # Gevil
+    "9.9.9.9"
+  ];
+  networking.networkmanager.dns = pkgs.lib.mkForce "none";
+
   services.udev.packages = [ recent-qmk-udev-rules ];
 
   # Enable CUPS to print documents.
