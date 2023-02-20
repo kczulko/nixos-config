@@ -12,8 +12,6 @@
   boot.loader.grub.copyKernels = true;
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = ["zfs"];
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -23,17 +21,30 @@
     hostId = "ace456ac";
     hostName = "thinkpad";
     interfaces = {
-      # disable usb ethernet adapter config
-      # enp0s20f0u5.useDHCP = true;
-      enp0s31f6.useDHCP = true;
+
+      enp45s0u2 = {
+        useDHCP = false;
+        ipv4.addresses = [{
+          address = "192.168.56.1";
+          prefixLength = 24;
+        }];
+      };
       wlp0s20f3.useDHCP = true;
     };
-    wireless.interfaces = [ "wlp0s20f3" ];
-    networkmanager.enable = true;
-    # the printer
+    networkmanager = {
+      unmanaged = [ "wlp0s20f0u3" ];
+      enable = true;
+    };
     extraHosts = ''
       192.168.0.14 BRW94533072B538.local
+      192.168.56.2 raspberypi
     '';
+    firewall = {
+      extraCommands = ''
+        iptables -A FORWARD --in-interface enp45s0u2 -j ACCEPT
+        iptables --table nat -A POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
+      '';
+    };
   };
 
   services.zfs.autoScrub.enable = true;

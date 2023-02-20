@@ -8,10 +8,6 @@ let
     # fetchTarball https://github.com/kczulko/openconnect-sso/archive/955359e8cae79b8db9b6daf08006a2fc1708b554.tar.gz
   # );
 
-  # haskell-language-server = (import (
-    # fetchTarball https://github.com/haskell/haskell-language-server/archive/745ef26f406dbdd5e4a538585f8519af9f1ccb09.tar.gz
-  # )).defaultPackage.x86_64-linux;
-
 in {
 
   users.users.kczulko = {
@@ -28,6 +24,7 @@ in {
       "pulse"
       "audio"
       "lp"
+      # "networkmanager"
     ];
     home = "/home/kczulko";
     shell = pkgs.lib.mkForce pkgs.zsh;
