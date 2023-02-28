@@ -1,6 +1,6 @@
 # kczulko nixos-config
 
-Config for my [NixOS](www.nixos.org) setups.
+Config for my [NixOS](https://www.nixos.org) setups.
 
 ## Deployment steps
 
