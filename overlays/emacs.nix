@@ -19,11 +19,13 @@ in {
     company
     docker
     dockerfile-mode
+    elm-mode
     eno
     envrc
     flycheck
     go-mode
     goto-chg
+    groovy-mode
     haskell-mode
     helm
     helm-ag
