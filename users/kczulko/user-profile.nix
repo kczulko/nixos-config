@@ -63,7 +63,13 @@ in {
       evince
       file
       gnome3.gnome-screenshot
-      gscan2pdf
+      # this is fixed here: https://github.com/NixOS/nixpkgs/pull/224094
+      # but has not been ported to stable
+      (gscan2pdf.overrideDerivation (prev: {
+        checkPhase = ''
+          rm t/131_save_tiff.t
+        '' + prev.checkPhase;
+      }))
       gsts
       ispell
       kubectl
