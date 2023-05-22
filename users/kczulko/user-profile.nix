@@ -71,6 +71,7 @@ in {
       nix-prefetch-git
       libreoffice
       masterpdfeditor4
+      i3-battery-popup
       # openconnect-sso
       openjdk
       sbt
@@ -89,9 +90,9 @@ in {
     ]);
 
     programs = {
-      vscode = {
-        enable = true;
-      };
+      # vscode = {
+        # enable = true;
+      # };
       direnv = {
         enable = true;
         nix-direnv.enable = true;

@@ -13,6 +13,8 @@
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = ["zfs"];
 
+  virtualisation.docker.enable = true;
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
@@ -22,13 +24,13 @@
     hostName = "thinkpad";
     interfaces = {
 
-      enp45s0u2 = {
-        useDHCP = false;
-        ipv4.addresses = [{
-          address = "192.168.56.1";
-          prefixLength = 24;
-        }];
-      };
+      # enp45s0u2 = {
+      #   useDHCP = false;
+      #   ipv4.addresses = [{
+      #     address = "192.168.56.1";
+      #     prefixLength = 24;
+      #   }];
+      # };
       wlp0s20f3.useDHCP = true;
     };
     networkmanager = {
@@ -40,10 +42,10 @@
       192.168.56.2 raspberypi
     '';
     firewall = {
-      extraCommands = ''
-        iptables -A FORWARD --in-interface enp45s0u2 -j ACCEPT
-        iptables --table nat -A POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
-      '';
+      # extraCommands = ''
+        # iptables -A FORWARD --in-interface enp45s0u2 -j ACCEPT
+        # iptables --table nat -A POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
+      # '';
     };
   };
 
