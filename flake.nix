@@ -3,14 +3,16 @@
 
   inputs = {
 
-    flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    # flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    # temporarily use this fork:
+    flake-utils-plus.url = "github:ravensiris/flake-utils-plus/ravensiris/fix-devshell-legacy-packages";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     latest-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -29,10 +31,12 @@
       inputs.flake-utils.follows = "flake-utils-plus/flake-utils";
     };
 
-    nurl.url = "github:nix-community/nurl";
+    nurl = {
+      url = "github:nix-community/nurl";
+    };
 
     gsts = {
-      url = "github:kczulko/gsts/9ab56887db7a3f02377e354a81c2c031b8aebcce";
+      url = "github:kczulko/gsts/kczulko/add-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -65,7 +69,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
-          agenix.nixosModule
+          agenix.nixosModules.default
           ./secrets/age-secrets.nix
           ./modules/common.nix
           ./modules/default-desktop.nix

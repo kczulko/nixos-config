@@ -10,6 +10,8 @@ let
 
 in {
 
+  programs.zsh.enable = true;
+
   users.users.kczulko = {
 
     description = "kczulko";
@@ -35,7 +37,7 @@ in {
 
   home-manager.users.kczulko = {
 
-    home.stateVersion = "22.11";
+    home.stateVersion = "23.05";
 
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
@@ -90,21 +92,12 @@ in {
     ]);
 
     programs = {
-      # vscode = {
-        # enable = true;
-      # };
       direnv = {
         enable = true;
         nix-direnv.enable = true;
       };
       firefox = {
         enable = true;
-        extensions = with config.nur.repos.rycee.firefox-addons; [
-          keepassxc-browser
-          multi-account-containers
-          metamask # for ethereum dapp development
-          consent-o-matic # disabling cookie popups
-        ];
         profiles = {
           default = {
             settings = {
@@ -121,6 +114,12 @@ in {
                 visibility: unset !important;
               }
             '';
+            extensions = with config.nur.repos.rycee.firefox-addons; [
+              keepassxc-browser
+              multi-account-containers
+              metamask # for ethereum dapp development
+              consent-o-matic # disabling cookie popups
+            ];
           };
         };
       };
@@ -166,9 +165,9 @@ in {
         # To use them, add '~/.daml/zsh' to your $fpath, e.g. by adding the following
         # to the beginning of '~/.zshrc' before you call 'compinit':
         # fpath=(~/.daml/zsh $fpath)
-        initExtraBeforeCompInit = ''
-          fpath=(~/.daml/zsh $fpath)
-        '';
+        # initExtraBeforeCompInit = ''
+          # fpath=(~/.daml/zsh $fpath)
+        # '';
         shellAliases = {
           ll = "ls -la";
           # assumes that hostname is the same as flake entry
