@@ -59,8 +59,6 @@ in {
       bat
       cabal2nix
       calcurse
-      customizations.polybar-launcher
-      customizations.setup-resolution
       docker-compose
       evince
       file
@@ -76,6 +74,7 @@ in {
       i3-battery-popup
       # openconnect-sso
       openjdk
+      openvpn
       sbt
       signal-desktop
       slack-dark
@@ -89,6 +88,9 @@ in {
       ghc
       haskell-language-server
       metals
+    ]) ++ (with customizations; [
+      polybar-launcher
+      setup-resolution
     ]);
 
     programs = {
