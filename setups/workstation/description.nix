@@ -38,7 +38,12 @@
     hostName = "workstation";
     wireless.interfaces = [ "wlp9s0" ];
     # Network (Wireless and cord)
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openvpn
+      ];
+    };
 
     # the printer
     extraHosts = ''

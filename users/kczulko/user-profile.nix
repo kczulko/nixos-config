@@ -74,7 +74,7 @@ in {
       i3-battery-popup
       # openconnect-sso
       openjdk
-      openvpn
+      openvpn-openssl_legacy
       sbt
       signal-desktop
       slack-dark
