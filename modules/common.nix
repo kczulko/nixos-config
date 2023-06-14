@@ -62,6 +62,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    agenix
     alacritty # fast rust terminal emulator
     arandr # Front End for xrandr
     binutils-unwrapped

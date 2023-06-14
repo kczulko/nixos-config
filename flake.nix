@@ -76,9 +76,10 @@
         ];
       };
 
-      sharedOverlays = (import ./overlays { inherit inputs latest-nixpkgs; }) ++ [
-        inputs.gsts.overlays.x86_64-linux
-      ];
+      sharedOverlays = (import ./overlays { inherit inputs latest-nixpkgs; }) ++ (with inputs; [
+        gsts.overlays.x86_64-linux
+        agenix.overlays.default
+      ]);
 
       hosts = {
         thinkpad = {
