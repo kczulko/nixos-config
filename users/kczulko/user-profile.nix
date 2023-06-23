@@ -62,15 +62,18 @@ in {
       docker-compose
       evince
       file
+      fzf
       gnome3.gnome-screenshot
       gscan2pdf
       gsts
       ispell
       kubectl
+      kubectx
       keepassxc
       nix-prefetch-git
       libreoffice
       masterpdfeditor4
+      mongodb-compass
       i3-battery-popup
       # openconnect-sso
       openjdk
@@ -175,18 +178,27 @@ in {
           # assumes that hostname is the same as flake entry
           rebuild-nixos = "sudo nixos-rebuild switch --flake /home/kczulko/Projects/nixos-config/ --impure";
           restart-xsession = "systemctl --user stop graphical-session.target";
+          kcx = "kubectx";
+        };
+        sessionVariables = {
+          KUBE_EDITOR = "$(which emacs)";
         };
         initExtra = ''
           unalias gsts
+          PROMPT='$(kube_ps1)'$PROMPT
+          kubeoff
         '';
         oh-my-zsh = {
           enable = true;
           plugins = [
+            "ag"
+            "bazel"
             "docker"
-            # "fd"
+            "fzf"
             "git"
+            "kube-ps1"
             "kubectl"
-            # "ripgrep"
+            "kubectx"
           ];
           theme = "agnoster";
         };
