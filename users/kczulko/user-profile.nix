@@ -179,6 +179,7 @@ in {
           rebuild-nixos = "sudo nixos-rebuild switch --flake /home/kczulko/Projects/nixos-config/ --impure";
           restart-xsession = "systemctl --user stop graphical-session.target";
           kcx = "kubectx";
+          kns = "kubens";
         };
         sessionVariables = {
           KUBE_EDITOR = "$(which emacs)";
