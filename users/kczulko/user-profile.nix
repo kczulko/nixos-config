@@ -56,6 +56,7 @@ in {
       "$HOME/.daml/bin"
     ];
     home.packages = (with pkgs; [
+      argocd
       bat
       cabal2nix
       calcurse
