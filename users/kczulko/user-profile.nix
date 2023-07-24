@@ -74,6 +74,7 @@ in {
       nix-prefetch-git
       libreoffice
       masterpdfeditor4
+      metals_1_0
       mongodb-compass
       i3-battery-popup
       # openconnect-sso
@@ -91,7 +92,7 @@ in {
       cabal-install
       ghc
       haskell-language-server
-      metals
+      # metals
     ]) ++ (with customizations; [
       polybar-launcher
       setup-resolution
