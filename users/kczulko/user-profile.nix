@@ -68,6 +68,7 @@ in {
       gscan2pdf
       gsts
       ispell
+      kgraphviewer
       kubectl
       kubectx
       keepassxc
