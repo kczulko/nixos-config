@@ -11,10 +11,10 @@ $ ####################
 $ # clone nixos project
 $ git clone git@github.com:kczulko/nixos-config.git
 $ ####################
-$ # upload private key and place it under /root/.ssh
+$ # download the private key and place it under /root/.ssh
 $ mv id_ed25519 /root/.ssh/
 $ ####################
-$ # build configuration by choosing appropriate setup, e.g. workstation:
+$ # build your setup, e.g. workstation:
 $ nixos-rebuild switch --flake ./nixos-config#workstation --impure
 ```
 
