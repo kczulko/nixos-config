@@ -65,6 +65,7 @@ in {
         gnomeExtensions.dash-to-dock
         gscan2pdf
         libreoffice
+        librecad
         setup-resolution
         unrar
         vlc
