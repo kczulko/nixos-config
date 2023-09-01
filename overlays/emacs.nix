@@ -19,6 +19,7 @@ in {
     company
     docker
     dockerfile-mode
+    drag-stuff
     elm-mode
     eno
     envrc
