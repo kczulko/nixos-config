@@ -75,14 +75,13 @@ in {
       nix-prefetch-git
       libreoffice
       masterpdfeditor4
-      metals_1_0
+      # metals_1_0
       mongodb-compass
       i3-battery-popup
       # openconnect-sso
       openjdk
       vpn-connect
       sbt
-      signal-desktop
       slack-dark
       unrar
       vlc
@@ -93,7 +92,8 @@ in {
       cabal-install
       ghc
       haskell-language-server
-      # metals
+      metals
+      signal-desktop
     ]) ++ (with customizations; [
       polybar-launcher
       setup-resolution
