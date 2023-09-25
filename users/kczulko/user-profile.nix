@@ -80,6 +80,7 @@ in {
       i3-battery-popup
       # openconnect-sso
       openjdk
+      polkadot
       vpn-connect
       sbt
       slack-dark
