@@ -67,6 +67,7 @@ in {
       gnome3.gnome-screenshot
       gscan2pdf
       gsts
+      htmlq
       ispell
       kgraphviewer
       kubectl
@@ -80,7 +81,6 @@ in {
       i3-battery-popup
       # openconnect-sso
       openjdk
-      polkadot
       vpn-connect
       sbt
       slack-dark
