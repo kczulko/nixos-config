@@ -85,6 +85,7 @@ in {
       sbt
       slack-dark
       unrar
+      util-linux
       vlc
       xe-guest-utilities
       zoom-us
