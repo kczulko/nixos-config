@@ -62,31 +62,32 @@ in {
       calcurse
       docker-compose
       evince
+      # metals_1_0
+      # openconnect-sso
       file
       fzf
       gnome3.gnome-screenshot
       gscan2pdf
       gsts
       htmlq
+      i3-battery-popup
       ispell
+      keepassxc
       kgraphviewer
       kubectl
       kubectx
-      keepassxc
-      nix-prefetch-git
       libreoffice
       masterpdfeditor4
-      # metals_1_0
       mongodb-compass
-      i3-battery-popup
-      # openconnect-sso
+      nix-prefetch-git
       openjdk
-      vpn-connect
       sbt
       slack-dark
+      tkcli
       unrar
       util-linux
       vlc
+      vpn-connect
       xe-guest-utilities
       zoom-us
     ]) ++ (with latest-nixpkgs; [
