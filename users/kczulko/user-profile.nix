@@ -32,12 +32,12 @@ in {
     shell = pkgs.lib.mkForce pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    passwordFile = config.age.secrets.kczulko-pass.path;
+    hashedPasswordFile = config.age.secrets.kczulko-pass.path;
   };
 
   home-manager.users.kczulko = {
 
-    home.stateVersion = "23.05";
+    home.stateVersion = "23.11";
 
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
@@ -45,7 +45,7 @@ in {
       ".config/i3/config".source = ./config-files/.config/i3/config;
       ".config/wallpaper.jpg".source = ./config-files/.config/wallpaper.jpg;
       ".config/polybar".source = ./config-files/.config/polybar;
-      ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
+      # ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
       ".screenlayout/setup.sh".source = ./config-files/.screenlayout/setup.sh;
     };
@@ -128,7 +128,6 @@ in {
             extensions = with config.nur.repos.rycee.firefox-addons; [
               keepassxc-browser
               multi-account-containers
-              metamask # for ethereum dapp development
               consent-o-matic # disabling cookie popups
             ];
           };

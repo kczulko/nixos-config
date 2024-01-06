@@ -28,7 +28,7 @@ in {
     shell = pkgs.lib.mkForce pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    passwordFile = config.age.secrets.ula-pass.path;
+    hashedPasswordFile = config.age.secrets.ula-pass.path;
   };
 
   home-manager.users.ula = {
@@ -37,7 +37,7 @@ in {
 
     home = {
 
-      stateVersion = "23.05";
+      stateVersion = "23.11";
 
       file = {
         ".Xresources".source = ../kczulko/config-files/.Xresources;

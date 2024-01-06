@@ -44,10 +44,7 @@ in {
   # Ensure Home Manager plays well with flakes
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "python-2.7.18.6"
-    "nodejs-16.20.0"
-  ];
+
   i18n.defaultLocale = "en_US.UTF-8";
   console.font = "Lat2-Terminus16";
   console.keyMap = "pl";

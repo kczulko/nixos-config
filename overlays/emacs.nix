@@ -1,12 +1,25 @@
 {inputs, latest-nixpkgs}: final: prev:
 let
 
-  emacs = prev.emacs;
-
   inherit (inputs) daml-mode;
 
+  # due to emacs tramp bug, temporary solution
+  # is to use some trunk emacs version greater than 29.1
+  # https://lists.gnu.org/r/bug-gnu-emacs/2023-08/msg00317.html
+  emacs = prev.emacs29.overrideAttrs(finalAttrs: prevAttrs:
+    {
+      version = "29.2";
+      src = prev.fetchurl {
+        url = "https://git.savannah.gnu.org/cgit/emacs.git/snapshot/emacs-dc9d02f8a01d86ac8ff3fb004bb2f22cf211dcef.tar.gz";
+        sha256 = "sha256-1cNwQ4DgxiA5KA+Zxsr3zASvH1xEi3w/JzjkUUmhS7U=";
+      };
+    }
+  );
+
+  emacsOverlay = daml-mode.overlays.default;
+
   emacsWithPackages =
-    ((prev.emacsPackagesFor emacs).overrideScope' daml-mode.overlays.default).emacsWithPackages;
+    ((prev.emacsPackagesFor emacs).overrideScope' emacsOverlay).emacsWithPackages;
 
 in {
 
@@ -35,6 +48,7 @@ in {
     highlight-symbol
     hydra
     key-chord
+    kubel
     lsp-haskell
     lsp-metals
     lsp-mode

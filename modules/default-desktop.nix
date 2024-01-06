@@ -25,7 +25,7 @@
     };
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     font-awesome_4
     terminus_font
     powerline-fonts

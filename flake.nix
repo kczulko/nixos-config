@@ -3,16 +3,14 @@
 
   inputs = {
 
-    # flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
-    # temporarily use this fork:
-    flake-utils-plus.url = "github:ravensiris/flake-utils-plus/ravensiris/fix-devshell-legacy-packages";
+    flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     latest-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -37,11 +35,15 @@
 
     gsts = {
       url = "github:kczulko/gsts/kczulko/add-nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs: with inputs;
+    let
+      insecurePkgs = [
+        "python-2.7.18.7"
+      ];
+    in
     flake-utils-plus.lib.mkFlake {
       inherit self inputs;
 
@@ -49,6 +51,7 @@
 
       channelsConfig = {
         allowUnfree = true;
+        permittedInsecurePackages = insecurePkgs;
       };
 
       hostDefaults = rec {
@@ -58,6 +61,7 @@
           latest-nixpkgs = import latest-nixpkgs {
             system = "x86_64-linux";
             config.allowUnfree = true;
+            config.permittedInsecurePackages = insecurePkgs;
           };
 
           hmLib = home-manager.lib.hm;
