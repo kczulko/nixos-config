@@ -1,4 +1,4 @@
-{inputs, latest-nixpkgs}: final: prev:
+{ inputs, latest-nixpkgs }: final: prev:
 {
-  vpn-connect = prev.callPackage ../pkgs/openvpn-wrapper.nix {};
+  vpn-connect = prev.callPackage ../pkgs/openvpn-wrapper.nix { };
 }

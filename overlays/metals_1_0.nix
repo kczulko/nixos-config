@@ -1,9 +1,9 @@
-{inputs, latest-nixpkgs}: final: prev:
+{ inputs, latest-nixpkgs }: final: prev:
 let
   unstable = latest-nixpkgs.legacyPackages."${prev.system}";
 in
 {
-  metals_1_0 = unstable.metals.overrideAttrs(final: prev:
+  metals_1_0 = unstable.metals.overrideAttrs (final: prev:
     {
       version = "1.0.0";
       deps = unstable.stdenv.mkDerivation {

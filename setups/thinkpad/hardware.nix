@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
@@ -14,22 +15,26 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "zroot/root/nixos";
+    {
+      device = "zroot/root/nixos";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B428-E454";
+    {
+      device = "/dev/disk/by-uuid/B428-E454";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "zroot/root/home";
+    {
+      device = "zroot/root/home";
       fsType = "zfs";
     };
 
   fileSystems."/tmp" =
-    { device = "zroot/root/tmp";
+    {
+      device = "zroot/root/tmp";
       fsType = "zfs";
     };
 

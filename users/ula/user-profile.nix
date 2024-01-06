@@ -1,14 +1,15 @@
-{pkgs, config, lib, hmLib, latest-nixpkgs, ...}:
+{ pkgs, config, lib, hmLib, latest-nixpkgs, ... }:
 let
 
   setup-resolution = import ../kczulko/customizations/setup-resolution.nix { pkgs = pkgs; };
 
-in {
+in
+{
 
   # for now it probably works without that
   # services.dbus.packages = [ pkgs.gnome3.dconf ];
   # services.udev.packages = [ pkgs.gnome3.gnome-settings-deamon ];
-  
+
   users.users.ula = {
 
     description = "ula";
@@ -106,16 +107,16 @@ in {
         "picture-uri" = "file:///home/ula/.config/wallpaper.png";
       };
     };
-    
+
     programs = {
-#      autorandr = {
-#        enable = true;
-#        hooks = {
-#          postswitch = {
-#            "setup-resolution" = builtins.readFile ../kczulko/config-files/.screenlayout/setup.sh;
-#          };
-#        };
-#      };
+      #      autorandr = {
+      #        enable = true;
+      #        hooks = {
+      #          postswitch = {
+      #            "setup-resolution" = builtins.readFile ../kczulko/config-files/.screenlayout/setup.sh;
+      #          };
+      #        };
+      #      };
       direnv = {
         enable = true;
         nix-direnv.enable = true;
@@ -132,23 +133,23 @@ in {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             };
             userChrome = ''
-               /* Show Bookmarks Toolbar in fullscreen mode */
-               #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
-                 visibility: unset !important;
-               }
+              /* Show Bookmarks Toolbar in fullscreen mode */
+              #navigator-toolbox[inFullscreen="true"] #PersonalToolbar {
+                visibility: unset !important;
+              }
             '';
           };
         };
       };
       git = {
         enable = true;
-        userName  = "uullcciiaa";
+        userName = "uullcciiaa";
         userEmail =
           let
             email-secret-path = config.age.secrets.ula-email.path;
           in
-            lib.strings.optionalString (lib.pathExists email-secret-path)
-              (lib.readFile email-secret-path);
+          lib.strings.optionalString (lib.pathExists email-secret-path)
+            (lib.readFile email-secret-path);
         aliases = {
           co = "checkout";
           ci = "commit";

@@ -1,5 +1,19 @@
-{ lib, stdenv, glibc, fetchurl, cups, dpkg, gnused, gawk, makeWrapper, ghostscript, file
-, a2ps, coreutils, perl, gnugrep, which
+{ lib
+, stdenv
+, glibc
+, fetchurl
+, cups
+, dpkg
+, gnused
+, gawk
+, makeWrapper
+, ghostscript
+, file
+, a2ps
+, coreutils
+, perl
+, gnugrep
+, which
 }:
 
 # it doesn't work :( but it's close... I think :)
@@ -55,6 +69,6 @@ stdenv.mkDerivation {
     ln -s $dir/lpd/filterdcpj105 $out/lib/cups/filter/brother_lpdwrapper_dcpj105
     mkdir -p $out/share/cups/model
     ln -s $dir/cupswrapper/brother_dcpj105_printer_en.ppd $out/share/cups/model/
-    '';
+  '';
 
 }

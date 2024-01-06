@@ -11,6 +11,6 @@ buildGoModule {
   };
   vendorHash = "sha256-8Dj6FyCZccJhT7IK5HasB6wKmbn26gPMwMTB3fWfwYQ=";
   sourceRoot = "source/src";
-  GOWORK="off";
+  GOWORK = "off";
   doCheck = false;
 }

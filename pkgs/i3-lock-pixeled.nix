@@ -1,5 +1,4 @@
-{
-  i3lock-pixeled
+{ i3lock-pixeled
 }:
 i3lock-pixeled.overrideDerivation (oldAttrs: rec {
   patchPhase = oldAttrs.patchPhase + ''

@@ -1,6 +1,6 @@
-{pkgs, ...}: with pkgs;
+{ pkgs, ... }: with pkgs;
 
-  writeScriptBin "setup-resolution"
+writeScriptBin "setup-resolution"
   ''
     if [ $(hostname) == "thinkpad" ]
     then

@@ -10,7 +10,8 @@ let
     };
   });
 
-in {
+in
+{
 
   nix = {
     # package = latest-nixpkgs.nix;
@@ -103,11 +104,11 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ (pkgs.callPackage ../pkgs/dcpj105-printer.nix {}) ];
+  services.printing.drivers = [ (pkgs.callPackage ../pkgs/dcpj105-printer.nix { }) ];
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
 
-  services.blueman.enable = true;  # bluetooth
+  services.blueman.enable = true; # bluetooth
 
   # mount mtp devices
   services.gvfs.enable = true;

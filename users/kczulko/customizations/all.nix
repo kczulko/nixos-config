@@ -1,4 +1,4 @@
-{pkgs,...}:
+{ pkgs, ... }:
 
 {
   polybar-launcher = import ./polybar-launcher.nix { inherit pkgs; };

@@ -24,18 +24,18 @@ in
   networking.firewall.trustedInterfaces = [ "flannel.1" "mynet" ];
 
   environment.variables = {
-    KUBECONFIG="${clusterAdminKubeConfig}:$HOME/.kube/config";
+    KUBECONFIG = "${clusterAdminKubeConfig}:$HOME/.kube/config";
   };
   home-manager.users.kczulko.home.sessionVariables = {
-    KUBECONFIG="${clusterAdminKubeConfig}:$HOME/.kube/config";
+    KUBECONFIG = "${clusterAdminKubeConfig}:$HOME/.kube/config";
   };
 
   users.groups = {
     kubernet = {
       members = [
-      "kczulko"
-      "root"
-      "kubernet"
+        "kczulko"
+        "root"
+        "kubernet"
       ];
     };
   };
@@ -55,7 +55,7 @@ in
   };
 
   services.kubernetes = {
-    roles = ["master" "node"];
+    roles = [ "master" "node" ];
 
     masterAddress = config.networking.hostName;
     kubelet.extraOpts = "--fail-swap-on=false";
@@ -63,14 +63,14 @@ in
     apiserver.authorizationMode = [ "RBAC" "Node" ];
     apiserver.allowPrivileged = true;
 
-    pki.certs = { 
-      devClusterAdmin = clusterAdminCert; 
+    pki.certs = {
+      devClusterAdmin = clusterAdminCert;
     };
 
     addons.dns.replicas = 1;
     addons.dashboard.enable = false;
   };
-  
+
   # Ensure addon-manager can literally do anything
   services.kubernetes.addonManager.bootstrapAddons = {
     kube-addon-manager-allow-all = {
@@ -86,7 +86,7 @@ in
       };
       subjects = [
         {
-          kind  = "User";
+          kind = "User";
           name = "system:kube-addon-manager";
         }
       ];

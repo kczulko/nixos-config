@@ -4,7 +4,7 @@
   services.kubernetes.addonManager.addons.cluster-ingress-ns = {
     apiVersion = "v1";
     kind = "Namespace";
-    metadata = { 
+    metadata = {
       name = "cluster-ingress";
       labels = {
         "addonmanager.kubernetes.io/mode" = "Reconcile";

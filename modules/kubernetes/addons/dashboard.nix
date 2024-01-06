@@ -153,7 +153,7 @@
     apiVersion = "rbac.authorization.k8s.io/v1";
     kind = "ClusterRole";
     metadata = {
-      labels = { 
+      labels = {
         k8s-app = "kubernetes-dashboard";
         "addonmanager.kubernetes.io/mode" = "Reconcile";
       };
@@ -169,7 +169,7 @@
     apiVersion = "rbac.authorization.k8s.io/v1";
     kind = "RoleBinding";
     metadata = {
-      labels = { 
+      labels = {
         k8s-app = "kubernetes-dashboard";
         "addonmanager.kubernetes.io/mode" = "Reconcile";
       };
@@ -190,7 +190,7 @@
   services.kubernetes.addonManager.addons.kubernetes-dashboard-cluster-role-binding = {
     apiVersion = "rbac.authorization.k8s.io/v1";
     kind = "ClusterRoleBinding";
-    metadata = { 
+    metadata = {
       name = "kubernetes-dashboard";
       labels = {
         "addonmanager.kubernetes.io/mode" = "Reconcile";
@@ -211,7 +211,7 @@
     apiVersion = "apps/v1";
     kind = "Deployment";
     metadata = {
-      labels = { 
+      labels = {
         k8s-app = "kubernetes-dashboard";
         "addonmanager.kubernetes.io/mode" = "Reconcile";
       };
@@ -287,7 +287,7 @@
     apiVersion = "v1";
     kind = "Service";
     metadata = {
-      labels = { 
+      labels = {
         k8s-app = "dashboard-metrics-scraper";
         "addonmanager.kubernetes.io/mode" = "Reconcile";
       };
@@ -306,7 +306,7 @@
     apiVersion = "apps/v1";
     kind = "Deployment";
     metadata = {
-      labels = { 
+      labels = {
         k8s-app = "dashboard-metrics-scraper";
         "addonmanager.kubernetes.io/mode" = "Reconcile";
       };

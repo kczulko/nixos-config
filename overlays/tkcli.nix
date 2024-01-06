@@ -1,6 +1,6 @@
-{inputs, latest-nixpkgs}: final: prev:
+{ inputs, latest-nixpkgs }: final: prev:
 
 {
-  tkcli = prev.callPackage ../pkgs/tkcli.nix {};
+  tkcli = prev.callPackage ../pkgs/tkcli.nix { };
 }
 

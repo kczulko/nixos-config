@@ -1,14 +1,15 @@
-{ config, pkgs, lib, latest-nixpkgs, ...}:
+{ config, pkgs, lib, latest-nixpkgs, ... }:
 let
 
   customizations = import ./customizations/all.nix { inherit pkgs; };
 
   # for cisco vpn connection
   # openconnect-sso = import (
-    # fetchTarball https://github.com/kczulko/openconnect-sso/archive/955359e8cae79b8db9b6daf08006a2fc1708b554.tar.gz
+  # fetchTarball https://github.com/kczulko/openconnect-sso/archive/955359e8cae79b8db9b6daf08006a2fc1708b554.tar.gz
   # );
 
-in {
+in
+{
 
   programs.zsh.enable = true;
 
@@ -135,13 +136,13 @@ in {
       };
       git = {
         enable = true;
-        userName  = "kczulko";
+        userName = "kczulko";
         userEmail =
           let
             email-secret-path = config.age.secrets.kczulko-email.path;
           in
-            lib.strings.optionalString (lib.pathExists email-secret-path)
-              (lib.readFile email-secret-path);
+          lib.strings.optionalString (lib.pathExists email-secret-path)
+            (lib.readFile email-secret-path);
         aliases = {
           co = "checkout";
           ci = "commit";
@@ -176,7 +177,7 @@ in {
         # to the beginning of '~/.zshrc' before you call 'compinit':
         # fpath=(~/.daml/zsh $fpath)
         # initExtraBeforeCompInit = ''
-          # fpath=(~/.daml/zsh $fpath)
+        # fpath=(~/.daml/zsh $fpath)
         # '';
         shellAliases = {
           ll = "ls -la";

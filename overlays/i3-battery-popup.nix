@@ -1,6 +1,6 @@
-{inputs, latest-nixpkgs}: final: prev:
+{ inputs, latest-nixpkgs }: final: prev:
 let
-  i3-battery-popup-pkg = {stdenv}: stdenv.mkDerivation {
+  i3-battery-popup-pkg = { stdenv }: stdenv.mkDerivation {
     name = "i3-battery-popup";
     src = builtins.fetchurl {
       url = "https://raw.githubusercontent.com/rjekker/i3-battery-popup/d894a102a1ff95019fc59d0a19c89687d502cd1a/i3-battery-popup";
@@ -13,5 +13,5 @@ let
   };
 in
 {
-  i3-battery-popup = prev.callPackage i3-battery-popup-pkg {};
+  i3-battery-popup = prev.callPackage i3-battery-popup-pkg { };
 }

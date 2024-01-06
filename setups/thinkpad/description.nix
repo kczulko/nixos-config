@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.copyKernels = true;
   boot.zfs.requestEncryptionCredentials = true;
-  boot.supportedFilesystems = ["zfs"];
+  boot.supportedFilesystems = [ "zfs" ];
 
   virtualisation.docker = {
     enable = true;
@@ -46,8 +46,8 @@
     '';
     firewall = {
       # extraCommands = ''
-        # iptables -A FORWARD --in-interface enp45s0u2 -j ACCEPT
-        # iptables --table nat -A POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
+      # iptables -A FORWARD --in-interface enp45s0u2 -j ACCEPT
+      # iptables --table nat -A POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
       # '';
     };
   };

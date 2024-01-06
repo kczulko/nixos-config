@@ -1,4 +1,4 @@
-{inputs, latest-nixpkgs}: final: prev:
+{ inputs, latest-nixpkgs }: final: prev:
 {
   direnv = latest-nixpkgs.legacyPackages."${prev.system}".direnv;
 

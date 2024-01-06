@@ -17,7 +17,7 @@
           dmenu
           feh
           i3status
-          (pkgs.callPackage ../pkgs/i3-lock-pixeled.nix {})
+          (pkgs.callPackage ../pkgs/i3-lock-pixeled.nix { })
           polybarFull
           rofi
         ];
@@ -30,7 +30,7 @@
     terminus_font
     powerline-fonts
     (latest-nixpkgs.nerdfonts.override {
-      fonts = ["Hack"];
+      fonts = [ "Hack" ];
     })
   ];
 
