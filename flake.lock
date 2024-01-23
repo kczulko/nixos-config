@@ -23,30 +23,6 @@
         "type": "github"
       }
     },
-    "daml-mode": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils-plus",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1704445480,
-        "narHash": "sha256-9oXStk1AW/gz4M1AqG0/fwEvTr/1N5S5Ts4XTvoTIRU=",
-        "owner": "kczulko",
-        "repo": "daml-mode-flake",
-        "rev": "2c52660f01e63b34ca529a6e72955dfc39726129",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kczulko",
-        "repo": "daml-mode-flake",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -313,7 +289,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "daml-mode": "daml-mode",
         "flake-utils-plus": "flake-utils-plus",
         "gsts": "gsts",
         "home-manager": "home-manager_2",

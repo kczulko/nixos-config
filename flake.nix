@@ -23,12 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    daml-mode = {
-      url = "github:kczulko/daml-mode-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils-plus/flake-utils";
-    };
-
     nurl = {
       url = "github:nix-community/nurl";
     };

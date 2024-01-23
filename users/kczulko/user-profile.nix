@@ -46,7 +46,7 @@ in
       ".config/i3/config".source = ./config-files/.config/i3/config;
       ".config/wallpaper.jpg".source = ./config-files/.config/wallpaper.jpg;
       ".config/polybar".source = ./config-files/.config/polybar;
-      # ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
+      ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
       ".screenlayout/setup.sh".source = ./config-files/.screenlayout/setup.sh;
     };

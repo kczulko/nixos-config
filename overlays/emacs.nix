@@ -1,8 +1,6 @@
 { inputs, latest-nixpkgs }: final: prev:
 let
 
-  inherit (inputs) daml-mode;
-
   # due to emacs tramp bug, temporary solution
   # is to use some trunk emacs version greater than 29.1
   # https://lists.gnu.org/r/bug-gnu-emacs/2023-08/msg00317.html
@@ -16,10 +14,7 @@ let
     }
   );
 
-  emacsOverlay = daml-mode.overlays.default;
-
-  emacsWithPackages =
-    ((prev.emacsPackagesFor emacs).overrideScope' emacsOverlay).emacsWithPackages;
+  emacsWithPackages = (prev.emacsPackagesFor emacs).emacsWithPackages;
 
 in
 {
@@ -31,6 +26,8 @@ in
     avy
     bazel
     company
+    daml-mode
+    daml-lsp
     docker
     dockerfile-mode
     drag-stuff
@@ -78,6 +75,5 @@ in
     # beacon         # ; highlight my cursor when scrolling
     # nameless       # ; hide current package name everywhere in elisp code
   ]) ++ [
-    epkgs.daml-mode
   ]);
 }
