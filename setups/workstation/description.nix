@@ -21,8 +21,17 @@
   };
 
   # enable virtualisation
-  # virtualisation.virtualbox.host.enable = true;
-  # users.extraGroups.vboxusers.members = [ "kczulko" ];
+  users.extraGroups.vboxusers.members = [ "kczulko" ];
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
+    guest = {
+      enable = true;
+      x11 = true;
+    };
+  };
 
   networking = {
 
@@ -48,7 +57,7 @@
       ];
     };
 
-    # the printer
+    # printer and raspberry
     extraHosts = ''
       192.168.0.14 BRW94533072B538.local
       192.168.56.2 raspberrypi
