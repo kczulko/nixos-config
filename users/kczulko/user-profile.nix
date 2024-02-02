@@ -90,6 +90,10 @@ in
       vlc
       vpn-connect
       xe-guest-utilities
+      qemu
+      qemu_kvm
+      virt-manager
+      libvirt
       zoom-us
     ]) ++ (with latest-nixpkgs; [
       bloop

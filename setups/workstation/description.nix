@@ -7,6 +7,7 @@
   boot.loader.grub.copyKernels = true;
   boot.kernelParams = [
     # "i915.enable_psr=0" # https://bbs.archlinux.org/viewtopic.php?id=268244
+    # "vfio-pci.ids=8086:a12f,1b21:1242" # usb passthrough for line6 hx stomp xl
   ];
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.zfs.requestEncryptionCredentials = true;
@@ -20,18 +21,25 @@
     storageDriver = "zfs";
   };
 
-  # enable virtualisation
-  users.extraGroups.vboxusers.members = [ "kczulko" ];
-  virtualisation.virtualbox = {
-    host = {
-      enable = true;
-      enableExtensionPack = true;
-    };
-    guest = {
-      enable = true;
-      x11 = true;
-    };
+  virtualisation.libvirtd = {
+    enable = true;
   };
+  users.extraGroups.qemu-libvirtd.members = [ "kczulko" ];
+  users.extraGroups.libvirtd.members = [ "kczulko" ];
+
+  # enable virtualisation
+
+  # users.extraGroups.vboxusers.members = [ "kczulko" ];
+  # virtualisation.virtualbox = {
+  #   host = {
+  #     enable = true;
+  #     enableExtensionPack = true;
+  #   };
+  #   guest = {
+  #     enable = true;
+  #     x11 = true;
+  #   };
+  # };
 
   networking = {
 
