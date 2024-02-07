@@ -75,6 +75,7 @@ in
     gnupg
     lshw
     lsof
+    pciutils
     mkpasswd
     multimarkdown
     networkmanagerapplet # NetworkManager in Gnome
