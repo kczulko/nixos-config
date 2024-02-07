@@ -123,6 +123,7 @@ in
               # enable userChrome
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               # "ui.systemUsesDarkTheme" = 1;
+              "browser.urlbar.showSearchSuggestionsFirst" = false;
             };
             userChrome = ''
               /* Show Bookmarks Toolbar in fullscreen mode */
