@@ -12,11 +12,24 @@
   boot.loader.grub.copyKernels = true;
   boot.zfs.requestEncryptionCredentials = true;
   boot.supportedFilesystems = [ "zfs" ];
+  boot.kernelParams = [
+    # "i915.enable_psr=0" # https://bbs.archlinux.org/viewtopic.php?id=268244
+    # "vfio-pci.ids=8086:a12f,1b21:1242" # usb passthrough for line6 hx stomp xl
+    "iommu=pt"
+    "intel_iommu=on"
+    "vfio-pci.ids=8086:02ed"
+  ];
 
-  virtualisation.docker = {
+  # virtualisation.docker = {
+  #   enable = true;
+  #   storageDriver = "zfs";
+  # };
+
+  virtualisation.libvirtd = {
     enable = true;
-    storageDriver = "zfs";
   };
+  users.extraGroups.qemu-libvirtd.members = [ "kczulko" ];
+  users.extraGroups.libvirtd.members = [ "kczulko" ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -45,6 +58,14 @@
       192.168.56.2 raspberypi
     '';
     firewall = {
+      # enable = false;
+      # allowedUDPPorts = [ 1900 ];
+      # extraPackages = [ pkgs.conntrack-tools ];
+      # autoLoadConntrackHelpers = true;
+      # extraCommands = ''
+      # nfct add helper ssdp inet udp
+      # iptables --verbose -I OUTPUT -t raw -p udp --dport 1900 -j CT --helper ssdp
+      # '';
       # extraCommands = ''
       # iptables -A FORWARD --in-interface enp45s0u2 -j ACCEPT
       # iptables --table nat -A POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
