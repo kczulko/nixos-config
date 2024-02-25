@@ -68,6 +68,7 @@ in
       file
       fzf
       gnome3.gnome-screenshot
+      go2tv
       gscan2pdf
       gsts
       htmlq

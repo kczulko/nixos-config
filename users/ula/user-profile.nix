@@ -71,6 +71,7 @@ in
         unrar
         vlc
         wine
+        xournalpp
       ];
     };
 

@@ -59,7 +59,8 @@
     '';
     firewall = {
       # enable = false;
-      # allowedUDPPorts = [ 1900 ];
+      allowedUDPPorts = [ 1901 ];
+      allowedTCPPorts = [ 3500 ];
       # extraPackages = [ pkgs.conntrack-tools ];
       # autoLoadConntrackHelpers = true;
       # extraCommands = ''
