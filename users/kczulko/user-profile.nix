@@ -61,6 +61,7 @@ in
       bat
       cabal2nix
       calcurse
+      cntr
       docker-compose
       evince
       # metals_1_0
