@@ -38,6 +38,11 @@ in
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
 
+    settings = {
+      trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
+      substituters = [ "https://cache.iog.io" ];
+    };
+
   };
 
   environment.etc."channels/nixpkgs".source = nixpkgs.outPath;
@@ -84,6 +89,7 @@ in
     python27
     ranger
     silver-searcher
+    tree
     usbutils
     vim
     unzip

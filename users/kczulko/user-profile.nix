@@ -82,6 +82,7 @@ in
       libreoffice
       masterpdfeditor4
       mongodb-compass
+      m4a2mp3
       nix-prefetch-git
       openjdk
       sbt
