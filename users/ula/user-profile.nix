@@ -38,7 +38,7 @@ in
 
     home = {
 
-      stateVersion = "23.11";
+      stateVersion = "24.05";
 
       file = {
         ".Xresources".source = ../kczulko/config-files/.Xresources;
@@ -178,7 +178,8 @@ in
       };
       zsh = {
         enable = true;
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
+        # enableAutosuggestions = true;
         shellAliases = {
           ll = "ls -la";
           rebuild-nixos = "sudo nixos-rebuild switch -I nixos-config=/home/ula/Projects/nixos-config/current.nix";

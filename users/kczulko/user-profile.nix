@@ -38,7 +38,7 @@ in
 
   home-manager.users.kczulko = {
 
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.05";
 
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
@@ -47,7 +47,7 @@ in
       ".config/wallpaper.jpg".source = ./config-files/.config/wallpaper.jpg;
       ".config/polybar".source = ./config-files/.config/polybar;
       ".config/nixpkgs/config.nix".source = ./config-files/.config/nixpkgs/config.nix;
-      ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
+      ".config/alacritty/alacritty.toml".source = ./config-files/.config/alacritty/alacritty.toml;
       ".screenlayout/setup.sh".source = ./config-files/.screenlayout/setup.sh;
     };
     home.sessionVariables = {
@@ -97,7 +97,7 @@ in
       qemu_kvm
       virt-manager
       libvirt
-      zoom-us
+      # zoom-us
     ]) ++ (with latest-nixpkgs; [
       bloop
       cabal-install
@@ -105,6 +105,7 @@ in
       haskell-language-server
       metals
       signal-desktop
+      zoom-us
     ]) ++ (with customizations; [
       polybar-launcher
       setup-resolution
@@ -178,7 +179,8 @@ in
       };
       zsh = {
         enable = true;
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
+        # enableAutosuggestions = true;
 
         # Zsh completions installed for Daml assistant.
         # To use them, add '~/.daml/zsh' to your $fpath, e.g. by adding the following

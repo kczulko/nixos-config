@@ -94,7 +94,7 @@ font:
     style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     family: "Hack Nerd Font Mono"
     style: Italic
 

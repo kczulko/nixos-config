@@ -6,7 +6,7 @@
 
     xserver = {
       enable = true;
-      layout = "pl";
+      xkb.layout = "pl";
 
       displayManager.gdm.enable = true;
 

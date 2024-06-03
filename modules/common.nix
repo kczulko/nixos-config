@@ -113,7 +113,7 @@ in
   services.printing.enable = true;
   services.printing.drivers = [ (pkgs.callPackage ../pkgs/dcpj105-printer.nix { }) ];
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
 
   services.blueman.enable = true; # bluetooth
 
