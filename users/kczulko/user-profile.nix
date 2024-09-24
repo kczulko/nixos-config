@@ -90,7 +90,7 @@ in
       qemu_kvm
       sbt
       slack-dark
-      teams
+      teams-for-linux
       tkcli
       unrar
       util-linux
