@@ -55,6 +55,7 @@ in
   console.font = "Lat2-Terminus16";
   console.keyMap = "pl";
 
+  # programs.nix-ld.enable = true;
   programs.bash = {
     enableCompletion = true;
   };

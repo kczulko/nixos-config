@@ -74,29 +74,31 @@ in
       gsts
       htmlq
       i3-battery-popup
+      imhex
       ispell
       keepassxc
       kgraphviewer
       kubectl
       kubectx
       libreoffice
+      libvirt
       masterpdfeditor4
       mongodb-compass
-      m4a2mp3
       nix-prefetch-git
       openjdk
+      qemu
+      qemu_kvm
       sbt
       slack-dark
+      teams
       tkcli
       unrar
       util-linux
+      virt-manager
       vlc
       vpn-connect
       xe-guest-utilities
-      qemu
-      qemu_kvm
-      virt-manager
-      libvirt
+      ytmdl
       # zoom-us
     ]) ++ (with latest-nixpkgs; [
       bloop
