@@ -62,6 +62,7 @@ in
       cabal2nix
       calcurse
       cntr
+      distrobox
       docker-compose
       evince
       # metals_1_0
