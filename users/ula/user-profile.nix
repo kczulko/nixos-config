@@ -61,7 +61,7 @@ in
         gnome3.gnome-screenshot
         gnome3.gnome-session
         gnome3.nautilus
-        gnome3.gedit
+        gedit
         gnomeExtensions.appindicator
         gnomeExtensions.dash-to-dock
         gscan2pdf
