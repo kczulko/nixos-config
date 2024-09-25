@@ -53,9 +53,9 @@ in
     home.sessionVariables = {
       TERM = "xterm-256color";
     };
-    home.sessionPath = [
-      "$HOME/.daml/bin"
-    ];
+    # home.sessionPath = [
+      # "$HOME/.daml/bin"
+    # ];
     home.packages = (with pkgs; [
       argocd
       bat
