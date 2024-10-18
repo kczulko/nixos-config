@@ -91,8 +91,8 @@ in
       qemu_kvm
       sbt
       slack-dark
-      teams-for-linux
       tkcli
+      tmux
       unrar
       util-linux
       virt-manager
