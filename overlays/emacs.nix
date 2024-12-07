@@ -56,6 +56,7 @@ in
     markdown-mode
     monokai-theme
     multiple-cursors
+    nim-mode
     nix-mode
     projectile
     s
