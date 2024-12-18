@@ -27,8 +27,8 @@ in
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-    '' + pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes";
+      experimental-features = nix-command flakes
+    '';
 
     registry.nixpkgs.flake = nixpkgs;
 
@@ -56,9 +56,7 @@ in
   console.keyMap = "pl";
 
   # programs.nix-ld.enable = true;
-  programs.bash = {
-    enableCompletion = true;
-  };
+  programs.bash.completion.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";

@@ -29,9 +29,7 @@
     font-awesome_4
     terminus_font
     powerline-fonts
-    (latest-nixpkgs.nerdfonts.override {
-      fonts = [ "Hack" ];
-    })
+    latest-nixpkgs.nerd-fonts.hack
   ];
 
 }

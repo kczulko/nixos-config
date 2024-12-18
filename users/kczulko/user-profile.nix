@@ -38,7 +38,7 @@ in
 
   home-manager.users.kczulko = {
 
-    home.stateVersion = "24.05";
+    home.stateVersion = "24.11";
 
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
@@ -69,7 +69,7 @@ in
       # openconnect-sso
       file
       fzf
-      gnome3.gnome-screenshot
+      gnome-screenshot
       go2tv
       gscan2pdf
       gsts
@@ -90,7 +90,7 @@ in
       qemu
       qemu_kvm
       sbt
-      slack-dark
+      slack
       tkcli
       tmux
       unrar
@@ -138,7 +138,7 @@ in
                 visibility: unset !important;
               }
             '';
-            extensions = with config.nur.repos.rycee.firefox-addons; [
+            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
               keepassxc-browser
               multi-account-containers
               consent-o-matic # disabling cookie popups
@@ -211,7 +211,6 @@ in
         oh-my-zsh = {
           enable = true;
           plugins = [
-            "ag"
             "bazel"
             "docker"
             "fzf"

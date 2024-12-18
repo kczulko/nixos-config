@@ -5,12 +5,12 @@
 
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     latest-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -66,7 +66,7 @@
         };
         modules = [
           home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           agenix.nixosModules.default
           ./secrets/age-secrets.nix
           ./modules/common.nix

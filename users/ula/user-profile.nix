@@ -38,7 +38,7 @@ in
 
     home = {
 
-      stateVersion = "24.05";
+      stateVersion = "24.11";
 
       file = {
         ".Xresources".source = ../kczulko/config-files/.Xresources;
@@ -55,12 +55,6 @@ in
         calcurse
         evince
         google-chrome
-        gnome3.gnome-control-center
-        gnome3.gnome-tweaks
-        gnome3.eog
-        gnome3.gnome-screenshot
-        gnome3.gnome-session
-        gnome3.nautilus
         gedit
         gnomeExtensions.appindicator
         gnomeExtensions.dash-to-dock
@@ -72,7 +66,14 @@ in
         vlc
         wine
         xournalpp
-      ];
+      ] + (with pkgs.gnome; [
+        gnome-control-center
+        gnome-tweaks
+        eog
+        gnome-screenshot
+        gnome-session
+        nautilus
+      ]);
     };
 
     xsession = {
