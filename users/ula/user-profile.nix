@@ -56,6 +56,12 @@ in
         evince
         google-chrome
         gedit
+        gnome-control-center
+        gnome-tweaks
+        eog
+        gnome-screenshot
+        gnome-session
+        nautilus
         gnomeExtensions.appindicator
         gnomeExtensions.dash-to-dock
         gscan2pdf
@@ -66,14 +72,7 @@ in
         vlc
         wine
         xournalpp
-      ] + (with pkgs.gnome; [
-        gnome-control-center
-        gnome-tweaks
-        eog
-        gnome-screenshot
-        gnome-session
-        nautilus
-      ]);
+      ];
     };
 
     xsession = {
