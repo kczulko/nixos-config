@@ -24,6 +24,7 @@ in
       "pulse"
       "audio"
       "lp"
+      "networkmanager"
     ];
     home = "/home/ula";
     shell = pkgs.lib.mkForce pkgs.zsh;

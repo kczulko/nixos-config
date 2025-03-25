@@ -4,7 +4,7 @@ let
   # due to emacs tramp bug, temporary solution
   # is to use some trunk emacs version greater than 29.1
   # https://lists.gnu.org/r/bug-gnu-emacs/2023-08/msg00317.html
-  emacs = prev.emacs29;
+  emacs = prev.emacs30;
     # .overrideAttrs (finalAttrs: prevAttrs:
   #   {
   #     version = "29.2";

@@ -27,7 +27,7 @@ in
       "pulse"
       "audio"
       "lp"
-      # "networkmanager"
+      "networkmanager"
     ];
     home = "/home/kczulko";
     shell = pkgs.lib.mkForce pkgs.zsh;
@@ -91,7 +91,6 @@ in
       qemu_kvm
       sbt
       slack
-      tkcli
       tmux
       unrar
       util-linux
