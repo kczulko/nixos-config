@@ -71,6 +71,7 @@
           ./secrets/age-secrets.nix
           ./modules/common.nix
           ./modules/default-desktop.nix
+          ./modules/dcp-j105.nix
         ];
       };
 

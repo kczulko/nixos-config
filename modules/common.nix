@@ -39,8 +39,8 @@ in
     ];
 
     settings = {
-      trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
-      substituters = [ "https://cache.iog.io" ];
+#      trusted-public-keys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" ];
+#      substituters = [ "https://cache.iog.io" ];
     };
 
   };
@@ -108,12 +108,6 @@ in
 
   services.udev.packages = [ recent-qmk-udev-rules ];
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [ (pkgs.callPackage ../pkgs/dcpj105-printer.nix { }) ];
-  services.avahi.enable = true;
-  services.avahi.nssmdns4 = true;
-
   services.blueman.enable = true; # bluetooth
 
   # mount mtp devices
@@ -142,28 +136,6 @@ in
           # AutoEnable = "true";
         # };
       };
-    };
-
-    sane = {
-      enable = true;
-      brscan4 = {
-        enable = true;
-        netDevices = {
-          home = { model = "DCP-J105"; ip = "192.168.0.14"; };
-        };
-      };
-    };
-
-    printers = {
-      ensureDefaultPrinter = "DCP-J105";
-      ensurePrinters = [
-        {
-          name = "DCP-J105";
-          description = "Brother DCP-J105";
-          deviceUri = "dnssd://Brother%20DCP-J105._ipp._tcp.local/?uuid=e3248000-80ce-11db-8000-94533072b538";
-          model = "brother_dcpj105_printer_en.ppd";
-        }
-      ];
     };
   };
 

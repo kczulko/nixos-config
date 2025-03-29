@@ -96,7 +96,6 @@ in
       util-linux
       virt-manager
       vlc
-      vpn-connect
       xe-guest-utilities
       ytmdl
       # zoom-us
