@@ -47,6 +47,7 @@ in
     highlight-symbol
     hydra
     key-chord
+    kotlin-mode
     kubel
     lsp-haskell
     lsp-metals
