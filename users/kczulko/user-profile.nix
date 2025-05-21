@@ -61,6 +61,7 @@ in
       bat
       cabal2nix
       calcurse
+      clipboard-cli
       cntr
       distrobox
       docker-compose
