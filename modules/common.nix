@@ -57,6 +57,12 @@ in
 
   # programs.nix-ld.enable = true;
   programs.bash.completion.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-tty;
+    enableSSHSupport = true;
+  };
+  services.pcscd.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
