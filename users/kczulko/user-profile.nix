@@ -38,7 +38,7 @@ in
 
   home-manager.users.kczulko = {
 
-    home.stateVersion = "24.11";
+    home.stateVersion = "25.05";
 
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
@@ -137,7 +137,7 @@ in
                 visibility: unset !important;
               }
             '';
-            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
               keepassxc-browser
               multi-account-containers
               consent-o-matic # disabling cookie popups
@@ -202,7 +202,7 @@ in
         sessionVariables = {
           KUBE_EDITOR = "$(which emacs)";
         };
-        initExtra = ''
+        initContent = ''
           unalias gsts
           PROMPT='$(kube_ps1)'$PROMPT
           kubeoff

@@ -66,7 +66,6 @@ in
     solidity-mode
     string-inflection
     terraform-mode
-    use-package
     use-package-chords
     visual-regexp-steroids
     yaml-mode
@@ -74,6 +73,7 @@ in
   ]) ++ (with epkgs.elpaPackages; [
     tramp
     undo-tree
+    use-package
     # auctex         # ; LaTeX mode
     # beacon         # ; highlight my cursor when scrolling
     # nameless       # ; hide current package name everywhere in elisp code
