@@ -123,6 +123,9 @@ in
         profiles = {
           default = {
             settings = {
+              # disable AI 'enhancements'...
+              "browser.tabs.groups.smart.enabled" = false;
+              "browser.ml.chat.enabled" = false;
               # "general.useragent.override" =
               "browser.startup.homepage" = "duckduckgo.com";
               "browser.fullscreen.autohide" = false;
