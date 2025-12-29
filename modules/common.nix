@@ -75,7 +75,7 @@ in
     arandr # Front End for xrandr
     binutils-unwrapped
     brightnessctl # Control screen brightness
-    du-dust
+    dust
     emacs-kczulko
     fd
     git

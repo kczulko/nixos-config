@@ -15,7 +15,11 @@ let
   #   }
   # );
 
-  emacsWithPackages = (prev.emacsPackagesFor emacs).emacsWithPackages;
+  epkgs = prev.emacsPackagesFor emacs;
+
+  helm-ag = epkgs.callPackage ../pkgs/helm-ag.nix {};
+
+  emacsWithPackages = epkgs.emacsWithPackages;
 
 in
 {
@@ -41,7 +45,6 @@ in
     groovy-mode
     haskell-mode
     helm
-    helm-ag
     helm-lsp
     helm-projectile
     highlight-symbol
@@ -78,5 +81,6 @@ in
     # beacon         # ; highlight my cursor when scrolling
     # nameless       # ; hide current package name everywhere in elisp code
   ]) ++ [
+    helm-ag
   ]);
 }

@@ -38,7 +38,7 @@ in
 
   home-manager.users.kczulko = {
 
-    home.stateVersion = "25.05";
+    home.stateVersion = "25.11";
 
     home.file = {
       ".fehbg".source = ./config-files/.fehbg;
@@ -72,7 +72,9 @@ in
       fzf
       gnome-screenshot
       go2tv
-      gscan2pdf
+      (gscan2pdf.overrideAttrs (final: prev: {
+        doCheck = false;
+      }))
       gsts
       htmlq
       i3-battery-popup

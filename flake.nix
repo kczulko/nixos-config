@@ -5,12 +5,12 @@
 
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     latest-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,6 +36,7 @@
     let
       insecurePkgs = [
         "python-2.7.18.8"
+        "python-2.7.18.12"
       ];
     in
     flake-utils-plus.lib.mkFlake {
